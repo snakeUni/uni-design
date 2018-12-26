@@ -1,0 +1,29 @@
+{
+  "name": "mui-design",
+  "version": "0.0.1",
+  "description": "ui component",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snakeUni/mui-design.git"
+  },
+  "keywords": [
+    "UI",
+    "Component",
+    "hooks",
+    "react"
+  ],
+  "author": "lanyincao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/snakeUni/mui-design/issues"
+  },
+  "homepage": "https://github.com/snakeUni/mui-design#readme",
+  "dependencies": {
+    "react": "next",
+    "react-dom": "next"
+  }
+}
