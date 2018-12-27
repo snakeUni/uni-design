@@ -17,6 +17,8 @@
       ]
     },
     "class-name": true,
+    "eofline": true,
+    "forin": true,
     "interface-over-type-literal": true,
     "new-parens": true,
     "no-angle-bracket-type-assertion": true,
@@ -38,10 +40,16 @@
     "no-use-before-declare": false,
     "no-var-keyword": true,
     "no-var-requires": true,
+    "no-console": [true, "debug", "info", "log", "time", "timeEnd", "trace"],
+    "no-unused-expression": true,
     "radix": true,
     "use-isnan": true,
-    "variable-name": {
-      "options": ["ban-keywords"]
-    }
+    "variable-name": [
+      true,
+      "allow-leading-underscore",
+      "ban-keywords",
+      "check-format",
+      "allow-pascal-case"
+    ]
   }
 }
