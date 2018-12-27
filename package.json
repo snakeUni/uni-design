@@ -6,7 +6,8 @@
   "module": "es/index.js",
   "scripts": {
     "test": "jest --config jest.config.js --verbose=false",
-    "storybook": "start-storybook -p 9999 -c .storybook"
+    "dev": "start-storybook -p 9999 -c .storybook",
+    "build": "node scripts/build.js"
   },
   "husky": {
     "hooks": {
@@ -47,6 +48,12 @@
   },
   "homepage": "https://github.com/snakeUni/mui-design#readme",
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-transform-modules-commonjs": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.2.0",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/preset-react": "^7.0.0",
     "@storybook/addon-knobs": "^4.1.4",
     "@storybook/react": "^4.2.0-alpha.0",
     "@types/react": "next",
@@ -54,7 +61,6 @@
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.4",
     "babel-polyfill": "^6.26.0",
-    "babel-preset-react": "^6.24.1",
     "commitlint": "^7.2.1",
     "css-loader": "^2.1.0",
     "enzyme": "^3.8.0",
