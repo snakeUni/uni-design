@@ -7,7 +7,9 @@
   "scripts": {
     "test": "jest --config jest.config.js --verbose=false",
     "dev": "start-storybook -p 9999 -c .storybook",
-    "build": "node scripts/build.js"
+    "build": "node scripts/build.js",
+    "lint:style": "stylelint \"src/**/*.scss\" --syntax scss",
+    "lint:style-fix": "stylelint \"src/**/*.scss\" --syntax scss --fix"
   },
   "husky": {
     "hooks": {

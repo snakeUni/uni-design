@@ -9,6 +9,7 @@
     "number-no-trailing-zeros": null,
     "no-empty-source": null,
     "unit-case": null,
-    "scss/at-rule-no-unknown": true
+    "scss/at-rule-no-unknown": true,
+    "font-family-no-missing-generic-family-keyword": null
   }
 }
