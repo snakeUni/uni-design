@@ -1,0 +1,67 @@
+{
+  "config": {
+    "title": "✌️ uni-design",
+    "description": "ui component",
+    "menu": [],
+    "ordering": "descending",
+    "version": "0.0.1",
+    "repository": "https://github.com/snakeUni/mui-design",
+    "native": false,
+    "codeSandbox": true,
+    "themeConfig": {
+      "codemirrorTheme": "dracula",
+      "colors": {
+        "primary": "#ea567c",
+        "sidebarBg": "white"
+      },
+      "styles": {
+        "body": {
+          "fontFamily": "-apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, arial, sans-serif"
+        },
+        "h1": {
+          "fontSize": "4em",
+          "fontWeight": 800
+        }
+      }
+    },
+    "protocol": "http",
+    "htmlContext": {
+      "head": {
+        "links": [
+          {
+            "rel": "stylesheet",
+            "href": "https://codemirror.net/theme/dracula.css"
+          }
+        ],
+        "raw": "\n      <style>\n        * {\n          box-sizing: border-box;\n        }\n        #root > div > div:first-of-type {\n          width: 350px;\n          min-width: 350px;\n        }\n        #root > div > div:first-of-type > div:first-of-type {\n          padding: 30px;\n          width: 350px;\n          min-width: 350px;\n        }\n        #root > div > div:first-of-type > div:first-of-type > div:last-of-type {\n          display: none;\n        }\n        #root > div > div:first-of-type > div:first-of-type > div:nth-child(2):before {\n          background: transparent;\n        }\n        #root > div > div:first-of-type > div:first-of-type > div:nth-child(2) h1 {\n          font-size: 2.5em;\n          font-weight: 100;\n        }\n        .scrollbar-container {\n          max-height: unset!important;\n        }\n        .CodeMirror {\n          font-size: 14px;\n          height: 100%!important;\n        }\n        .CodeMirror pre {\n          line-height: 20.8px!important;\n        }\n        .CodeMirror-line {\n          padding: 0 10px!important;\n        }\n        .CodeMirror-lines {\n          padding: 10px 0!important;\n        }\n        .CodeMirror-linenumber {\n          padding: 0 7px 0 5px!important;\n        }\n        .code-table {\n          display: flex;\n        }\n        .code-table {\n          margin-bottom: 1em;\n        }\n        .code-table > div:first-of-type {\n          flex: 1.5;\n        }\n        .code-table > div:last-of-type {\n          flex: 1;\n        }\n        .code-table > div:last-child {\n          position: relative;\n          display: flex;\n          align-items: center;\n          justify-content: center;\n          background: #f4f6f9;\n          font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto,\n        segoe ui, arial, sans-serif;\n          font-size: 4em;\n          font-weight: 600;\n          color: white;\n        }\n        .highlight {\n          background: #ea567c;\n          color: white;\n          margin: 0 3px;\n          padding: 4px 6px;\n          border-radius: 3px;\n        }\n        .grommetux-meter {\n          height: 70px;\n        }\n        .grommetux-meter__graphic {\n          fill: transparent;\n          stroke-linecap: round;\n          stroke-linejoin: round;\n          stroke-width: 15px;\n          width: 70px;\n          height: 70px;\n        }\n        .grommetux-meter__tracks {\n          stroke: white;\n        }\n        .grommetux-meter__values {\n          stroke: rgb(45, 55, 71);\n        }\n        code {\n          background: #f4f6f9;\n          color: #7D899C;\n          margin: 0 3px;\n          padding: 4px 6px;\n          border-radius: 3px;\n          font-family: \"Source Code Pro\",monospace;\n          font-size: 14px;\n        }\n        a, a:visited, a:active {\n          color: rgb(31, 182, 255);\n          text-decoration: none;\n          cursor: pointer;\n        }\n      </style>\n      "
+      }
+    },
+    "plugins": [
+      {}
+    ]
+  },
+  "entries": {
+    "demo/home-page.mdx": {
+      "name": "Hello world",
+      "id": "35ac957aec9142a16e80f1f71cf608fb",
+      "filepath": "demo/home-page.mdx",
+      "link": "https://github.com/snakeUni/mui-design/edit/master/demo/home-page.mdx",
+      "slug": "demo-home-page",
+      "route": "/demo-home-page",
+      "order": 0,
+      "menu": null,
+      "headings": [
+        {
+          "depth": 1,
+          "slug": "hello-world",
+          "value": "Hello world"
+        },
+        {
+          "depth": 2,
+          "slug": "这是二级标题",
+          "value": "这是二级标题"
+        }
+      ]
+    }
+  }
+}
