@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 type buttonType = 'warning' | 'primary' | 'ghost'
-type sizeType = 'large' | 'normal'
+type sizeType = 'large' | 'normal' | 'small'
 export interface ButtonProps {
   // button的类型
   type?: buttonType
@@ -23,4 +23,5 @@ export interface ButtonProps {
   icon?: React.ReactNode
   // htmlType 原生的type  比如submit这些
   htmlType?: string
+  children?: React.ReactNode
 }

@@ -1,6 +1,7 @@
 import * as React from 'react'
 import ClassNames from 'classnames'
 import { ButtonProps } from './interface'
+import './style/index.scss'
 
 const noop = () => {}
 
@@ -13,11 +14,11 @@ function isString(str: any) {
 // Insert one space between two chinese characters automatically.
 function insertSpace(child: any) {
   if (isString(child.type) && isTwoCNChar(child.props.children)) {
-    return React.cloneElement(child, {}, child.props.children.split('').join(' '))
+    return React.cloneElement(child, {}, child.props.children.split('').join(''))
   }
   if (isString(child)) {
     if (isTwoCNChar(child)) {
-      child = child.split('').join(' ')
+      child = child.split('').join('')
     }
     return <span>{child}</span>
   }
@@ -29,7 +30,7 @@ const defaultProps: ButtonProps = {
   loading: false,
   onClick: noop,
   size: 'normal',
-  prefixCls: 'ui-btn'
+  prefixCls: 'uni-btn'
 }
 
 const getClassName = ({ className, loading, disabled, type, size, prefixCls }: ButtonProps) => {
@@ -39,6 +40,7 @@ const getClassName = ({ className, loading, disabled, type, size, prefixCls }: B
     [`${prefixCls}-ghost`]: type === 'ghost',
     [`${prefixCls}-large`]: size === 'large',
     [`${prefixCls}-normal`]: size === 'normal',
+    [`${prefixCls}-small`]: size === 'small',
     [`${prefixCls}-loading`]: loading,
     [`${prefixCls}-disabled`]: disabled
   })
@@ -67,7 +69,7 @@ const renderIcon = ({ icon }: ButtonProps) => {
   return null
 }
 
-const renderChildren = ({ children }: any) => {
+const renderChildren = ({ children }: ButtonProps) => {
   return React.Children.map(children, insertSpace)
 }
 
