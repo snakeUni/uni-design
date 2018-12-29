@@ -6,8 +6,10 @@
   "module": "es/index.js",
   "scripts": {
     "test": "jest --config jest.config.js --verbose=false",
-    "dev": "start-storybook -p 9999 -c .storybook",
-    "build": "node scripts/build.js"
+    "build": "node scripts/build.js",
+    "lint:style": "stylelint \"src/**/*.scss\" --syntax scss",
+    "lint:style-fix": "stylelint \"src/**/*.scss\" --syntax scss --fix",
+    "dev": "NODE_ENV=development start-storybook -p 9999 -c .storybook"
   },
   "husky": {
     "hooks": {
@@ -54,7 +56,10 @@
     "@babel/plugin-transform-runtime": "^7.2.0",
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
+    "@storybook/addon-info": "^4.2.0-alpha.0",
     "@storybook/addon-knobs": "^4.1.4",
+    "@storybook/addon-options": "^4.2.0-alpha.0",
+    "@storybook/components": "^4.2.0-alpha.0",
     "@storybook/react": "^4.2.0-alpha.0",
     "@types/classnames": "^2.2.6",
     "@types/react": "16.7.18",
