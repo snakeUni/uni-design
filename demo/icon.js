@@ -1,5 +1,5 @@
 import * as React from 'react'
-import Icon from '../src/components/icon'
+import Icon from '../src/components/icon/index.tsx'
 
 const IconDemo = () => {
   return (
