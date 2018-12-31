@@ -1,6 +1,7 @@
 import  React from "react";
 import { storiesOf } from "@storybook/react";
 import Icon from '../src/components/icon'
+import Button from '../src/components/button'
 
 const types = ['check-circle', 'close-circle', 'left-circle', 'down-circle', 'minus-circle', 'plus-circle', 'right-circle', 
 'time-circle', 'up-circle', 'warning-circle', 'sync', 'undo', 'redo', 'reload', 'message', 'setting', 'adduser', 'heart', 'error', 'star',
@@ -11,7 +12,8 @@ const types = ['check-circle', 'close-circle', 'left-circle', 'down-circle', 'mi
 'zoomout', 'zoomin', 'caret-down', 'caret-up', 'caret-right', 'caret-left', 'search'
 ]
 
-storiesOf('data show', module).add('Icon', () => {
+storiesOf('data show', module)
+.add('Icon', () => {
   return (
     <div>
       <div style={{ display: 'flex', flexWrap: 'wrap', color: '#999' }}>
@@ -28,4 +30,37 @@ storiesOf('data show', module).add('Icon', () => {
       </div>
     </div>
   )  
+})
+.add('Button', () => {
+  return (
+    <div>
+      <div className="mr-20">
+        <Button>初始按钮</Button>
+      </div>
+      <div className="mr-20">
+        <Button type="warning">警告按钮</Button>
+      </div>
+      <div className="mr-20">
+        <Button type="ghost">幽灵按钮</Button>
+      </div>
+      <div className="mr-20">
+        <Button size="large">大号按钮</Button>
+      </div>
+      <div className="mr-20">
+        <Button size="small">小号按钮</Button>
+      </div>
+      <div className="mr-20">
+        <Button disabled>不可用按钮</Button>
+      </div>
+      <div className="mr-20">
+        <Button loading>加载...</Button>
+      </div>
+      <div style={{ marginTop: 20 }}>
+        <Button icon={<Icon type="check-circle" />}>带有icon</Button>
+      </div>
+      <div style={{ marginTop: 20 }}>
+        <Button  onClick={() => alert('😂😂嘿嘿嘿😂😂')}>点击我，快！快！快！</Button>
+      </div>
+    </div>
+  )
 })

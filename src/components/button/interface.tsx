@@ -3,8 +3,8 @@ import * as React from 'react'
 type buttonType = 'warning' | 'primary' | 'ghost'
 type sizeType = 'large' | 'normal' | 'small'
 export interface ButtonProps {
-  // button的类型
-  type?: buttonType
+  // button的类型 默认primary
+  type: buttonType
   // button的尺寸，默认normal
   size: sizeType
   // disabled 默认为false

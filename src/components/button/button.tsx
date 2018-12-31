@@ -1,5 +1,6 @@
 import * as React from 'react'
 import ClassNames from 'classnames'
+import Icon from '../icon'
 import { ButtonProps } from './interface'
 import './style/index.scss'
 
@@ -30,7 +31,8 @@ const defaultProps: ButtonProps = {
   loading: false,
   onClick: noop,
   size: 'normal',
-  prefixCls: 'uni-btn'
+  prefixCls: 'uni-btn',
+  type: 'primary'
 }
 
 const getClassName = ({ className, loading, disabled, type, size, prefixCls }: ButtonProps) => {
@@ -57,14 +59,14 @@ const handleClick = (
 
 const renderLoading = ({ loading }: ButtonProps) => {
   if (loading) {
-    return <div>loading...</div>
+    return <Icon type="reload" />
   }
   return null
 }
 
 const renderIcon = ({ icon }: ButtonProps) => {
   if (icon) {
-    return <div>icon</div>
+    return <React.Fragment>{icon}</React.Fragment>
   }
   return null
 }
@@ -72,17 +74,21 @@ const renderIcon = ({ icon }: ButtonProps) => {
 const renderChildren = ({ children }: ButtonProps) => {
   return React.Children.map(children, insertSpace)
 }
-
-const Button = (props: ButtonProps) => {
-  const { style, htmlType } = props
+// 解决ts 写了defaultProps  使用仍然需要必填的问题
+const Button: React.SFC<ButtonProps> & { defaultProps: Partial<ButtonProps> } = props => {
+  const { style, htmlType, disabled } = props
   return (
-    <div className={getClassName(props)} style={style}>
-      <button onClick={e => handleClick(e, props)} type={htmlType}>
-        {renderLoading(props)}
-        {renderIcon(props)}
-        {renderChildren(props)}
-      </button>
-    </div>
+    <button
+      onClick={e => handleClick(e, props)}
+      type={htmlType}
+      className={getClassName(props)}
+      style={style}
+      disabled={disabled}
+    >
+      {renderLoading(props)}
+      {renderIcon(props)}
+      {renderChildren(props)}
+    </button>
   )
 }
 
