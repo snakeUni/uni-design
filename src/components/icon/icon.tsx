@@ -1,5 +1,6 @@
 import * as React from 'react'
 import ClassNames from 'classnames'
+import * as warning from 'warning'
 import './style/index.scss'
 
 const noop = () => {}
@@ -23,8 +24,9 @@ const handleClick = (e: React.MouseEvent<HTMLElement>, { onClick }: IconProps) =
   onClick(e)
 }
 
-const Icon: React.SFC<IconProps> = (props: IconProps) => {
+const Icon: React.SFC<IconProps> & { defaultProps: Partial<IconProps> } = props => {
   const { prefixCls, type, size, color, ...rest } = props
+  warning(!!type, 'type should be required for icon')
   const classStr = ClassNames(prefixCls, `${prefixCls}-${type}`)
   const style = {
     fontSize: size,

@@ -3,6 +3,7 @@ $hd: 1px;
 /* 字体 */
 $font-size-normal: 14 * $hd;
 $font-size-small: 12 * $hd;
+$font-size-large: 16 * $hd;
 
 /* icon size */
 $icon-size-xxs: 8 * $hd;
@@ -39,8 +40,11 @@ $font-family: "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "P
 
 /* 颜色 */
 // 品牌色 代表品牌对外形象
-$color-brand-deep: #1890ff;
-$color-brand-normal: #5584FF;
+$color-brand-deep: #cf1322;
+$color-brand-normal: #f5222d;
+$color-brand-shallow: #ff4d4f;
+$color-brand-shallow-middle: #ff7875;
+$color-brand-shallow-low: #ffa39e;
 
 // 中立色 用于界面设计中字体、背景、边框、分割线、ICON、中立插图等
 $color-line-shallow: #E6E7EB;
