@@ -1,6 +1,6 @@
-import React from 'react'
+import  React from "react";
+import { storiesOf } from "@storybook/react";
 import Icon from '../src/components/icon'
-import './index.scss'
 
 const types = ['check-circle', 'close-circle', 'left-circle', 'down-circle', 'minus-circle', 'plus-circle', 'right-circle', 
 'time-circle', 'up-circle', 'warning-circle', 'sync', 'undo', 'redo', 'reload', 'message', 'setting', 'adduser', 'heart', 'error', 'star',
@@ -11,21 +11,21 @@ const types = ['check-circle', 'close-circle', 'left-circle', 'down-circle', 'mi
 'zoomout', 'zoomin', 'caret-down', 'caret-up', 'caret-right', 'caret-left', 'search'
 ]
 
-const IconDemo = () => {
+storiesOf('data show', module).add('Icon', () => {
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-      {
-        types.map(type => {
-          return (
-            <div style={{ width: 100, textAlign: 'center', padding: 10 }} className="icon-hover">
-              <div><Icon type={type}/></div>
-              <div style={{ marginTop: 10 }}>{type}</div>
-            </div>
-          )
-        })
-      }
+    <div>
+      <div style={{ display: 'flex', flexWrap: 'wrap', color: '#999' }}>
+        {
+          types.map(type => {
+            return (
+              <div style={{ width: 100, textAlign: 'center', padding: 10 }} className="icon-hover">
+                <div><Icon type={type}/></div>
+                <div style={{ marginTop: 10 }}>{type}</div>
+              </div>
+            )
+          })
+        }
+      </div>
     </div>
-  )
-}
-
-export default IconDemo
+  )  
+})
