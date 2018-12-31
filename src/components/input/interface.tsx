@@ -6,6 +6,10 @@ type omitProps = 'type' | 'prefix' | 'onChange' | 'onBlur'
 
 // 对omit的具体用法可以查看typescript的官网关于picker和exclude的用法，就是集合的概念
 export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, omitProps> {
+  // 当前值
+  value?: string
+  // 默认值
+  defaultValue?: string
   // 类型
   type: inputType
   // prefix
