@@ -4,7 +4,7 @@ import './style/index.scss'
 
 const noop = () => {}
 
-interface IconProps {
+interface IconProps extends React.HTMLAttributes<HTMLElement> {
   size: string | number
   type?: string
   prefixCls: string
@@ -23,14 +23,14 @@ const handleClick = (e: React.MouseEvent<HTMLElement>, { onClick }: IconProps) =
   onClick(e)
 }
 
-const Icon = (props: IconProps) => {
-  const { prefixCls, type, size, color } = props
+const Icon: React.SFC<IconProps> = (props: IconProps) => {
+  const { prefixCls, type, size, color, ...rest } = props
   const classStr = ClassNames(prefixCls, `${prefixCls}-${type}`)
   const style = {
     fontSize: size,
     color
   }
-  return <i className={classStr} style={style} onClick={e => handleClick(e, props)} />
+  return <i className={classStr} style={style} onClick={e => handleClick(e, props)} {...rest} />
 }
 
 Icon.defaultProps = defaultProps
