@@ -41,10 +41,14 @@ $font-family: "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "P
 /* 颜色 */
 // 品牌色 代表品牌对外形象
 $color-brand-deep: #cf1322;
-$color-brand-normal: #f5222d;
+$color-brand-normal: #ff5454;
 $color-brand-shallow: #ff4d4f;
 $color-brand-shallow-middle: #ff7875;
 $color-brand-shallow-low: #ffa39e;
+
+// 阴影色
+$color-shadow-shallow: #fff1f0;
+$color-shadow-normal: #ffccc7;
 
 // 中立色 用于界面设计中字体、背景、边框、分割线、ICON、中立插图等
 $color-line-shallow: #E6E7EB;
