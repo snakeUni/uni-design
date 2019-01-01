@@ -20,7 +20,7 @@ const exec = (command, extraEnv) =>
     env: Object.assign({}, process.env, extraEnv)
   })
 
-const ignoreGlobs = ['**/__tests__/*', '**/*-test.js', '**/*-story.js'].join(',')
+const ignoreGlobs = ['**/__tests__/*', '**/*-test.js', '**/*-story.js', '**/*-stories.js'].join(',')
 
 console.log('Deleting old build folders...') // eslint-disable-line no-console
 
@@ -30,10 +30,10 @@ Promise.all([
   rimrafAsync(`${rootDir}/umd`)
 ])
   .then(() => {
-    exec(`${babelPath} src -q -d es --copy-files --ignore "${ignoreGlobs}" --extensions=.ts,.tsx,.js,.jsx`, {
+    exec(`${babelPath} src/components -q -d es --copy-files --ignore "${ignoreGlobs}" --extensions=.ts,.tsx,.js,.jsx`, {
       BABEL_ENV: 'es'
     })
-    exec(`${babelPath} src -q -d lib --copy-files --ignore "${ignoreGlobs}" --extensions=.ts,.tsx,.js,.jsx`, {
+    exec(`${babelPath} src/components -q -d lib --copy-files --ignore "${ignoreGlobs}" --extensions=.ts,.tsx,.js,.jsx`, {
       BABEL_ENV: 'cjs'
     })
     // exec(`${rollupPath} -c scripts/rollup.config.js -o umd/carbon-components-react.js`, {
