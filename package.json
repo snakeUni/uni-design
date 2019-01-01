@@ -9,7 +9,8 @@
     "build": "node scripts/build.js",
     "lint:style": "stylelint \"src/**/*.scss\" --syntax scss",
     "lint:style-fix": "stylelint \"src/**/*.scss\" --syntax scss --fix",
-    "dev": "NODE_ENV=development start-storybook -p 9999 -c .storybook"
+    "dev": "NODE_ENV=development start-storybook -p 9999 -c .storybook",
+    "storybook": "rm -rf ./node_modules/@storybook/react/node_modules/react && rm -rf ./node_modules/@storybook/react/node_modules/react-dom && start-storybook -p 9999"
   },
   "husky": {
     "hooks": {
@@ -102,5 +103,13 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "warning": "^4.0.2"
+  },
+  "peerDependencies": {
+    "react": ">= 16.4.0",
+    "react-dom": ">= 16.4.0"
+  },
+  "resolutions": {
+    "react": "16.7.0-alpha.2",
+    "react-dom": "16.7.0-alpha.2"
   }
 }

@@ -20,7 +20,7 @@ storiesOf('data show', module)
         {
           types.map(type => {
             return (
-              <div style={{ width: 100, textAlign: 'center', padding: 10 }} className="icon-hover">
+              <div style={{ width: 100, textAlign: 'center', padding: 10 }} className="icon-hover" key={type}>
                 <div><Icon type={type}/></div>
                 <div style={{ marginTop: 10 }}>{type}</div>
               </div>
