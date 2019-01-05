@@ -119,6 +119,10 @@ $input: 'uni-input';
           transition: all 0.3s;
           display: table-cell;
 
+          &::placeholder {
+            color: #999;
+          }
+
           &:focus {
             outline: 0;
             border-color: $color-brand-normal;

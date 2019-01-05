@@ -49,8 +49,7 @@ type spanTypeNumber =
   | 23
   | 24
 
-export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl'
-
+// 布局为flex布局
 export interface RowProps extends React.HTMLAttributes<HTMLDivElement> {
   // 垂直对齐方式
   align: alignType
@@ -65,16 +64,4 @@ export interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
   offset: number
   // 列宽度，栅格占位数
   span?: spanTypeNumber
-  // xxs < 480px 响应式栅格，可为栅格数或一个包含其他属性的对象
-  xs?: number | object
-  // sm >= 480px 响应式栅格，可为栅格数或一个包含其他属性的对象
-  sm?: number | object
-  // md >= 720px 响应式栅格，可为栅格数或一个包含其他属性的对象
-  md?: number | object
-  // lg >= 990px 响应式栅格，可为栅格数或一个包含其他属性的对象
-  lg?: number | object
-  // xl >= 1200px 响应式栅格，可为栅格数或一个包含其他属性的对象
-  xl?: number | object
-  // xxl >= 1500px 响应式栅格，可为栅格数或一个包含其他属性的对象
-  xxl?: number | object
 }
