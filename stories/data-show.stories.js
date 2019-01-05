@@ -3,6 +3,7 @@ import { storiesOf } from "@storybook/react";
 import Icon from '../src/components/icon'
 import Button from '../src/components/button'
 import { Row, Col } from '../src/components/grid'
+import Avatar from '../src/components/avatar'
 
 const types = ['check-circle', 'close-circle', 'left-circle', 'down-circle', 'minus-circle', 'plus-circle', 'right-circle', 
 'time-circle', 'up-circle', 'warning-circle', 'sync', 'undo', 'redo', 'reload', 'message', 'setting', 'adduser', 'heart', 'error', 'star',
@@ -176,6 +177,23 @@ storiesOf('data show', module)
           <Col span={4} offset={2}><div className="red">内容</div></Col>
           <Col span={4}><div className="red">内容</div></Col>
         </Row>
+      </div>
+    </div>
+  )
+})
+.add('Avatar', () => {
+  return (
+    <div>
+      <Avatar icon="adduser"/>
+      <Avatar icon="adduser" size="large"/>
+      <Avatar icon="adduser" size="small"/>
+      <Avatar src="http://img0.imgtn.bdimg.com/it/u=2253122537,3805608083&fm=11&gp=0.jpg"/>
+      <Avatar src="http://img0.imgtn.bdimg.com/it/u=2894163781,1992732231&fm=26&gp=0.jpg" size="large"/>
+      <Avatar src="http://img5.imgtn.bdimg.com/it/u=2479827366,1415772881&fm=26&gp=0.jpg" size={64}/>
+      <div style={{ marginTop: 20 }}>
+        <Avatar src="http://img5.imgtn.bdimg.com/it/u=2479827366,1415772881&fm=26&gp=0.jpg" size={120}/>
+        <Avatar src="http://img5.imgtn.bdimg.com/it/u=2479827366,1415772881&fm=26&gp=0.jpg" size={120} shape="square"/>
+        <Avatar src="http://img5.imgtn.bdimg.com/it/u=2479827366,1415772881&fm=26&gp=0.jpg" shape="square"/>
       </div>
     </div>
   )
