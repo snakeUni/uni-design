@@ -11,7 +11,7 @@ function compileTS(dir, esModule) {
 
 function styles() {
   return gulp
-    .src(['./src/**/*.scss'])
+    .src(['./src/components/**/*.scss'])
     .pipe(gulp.dest('es'))
     .pipe(gulp.dest('lib'))
 }
