@@ -105,13 +105,8 @@
   },
   "dependencies": {
     "classnames": "^2.2.6",
+    "react-transition-group": "^2.5.2",
     "warning": "^4.0.2"
-  },
-  "babel": {
-    "presets": [
-      "./scripts/env",
-      "@babel/preset-react"
-    ]
   },
   "peerDependencies": {
     "react": ">= 16.6.3",

@@ -76,19 +76,21 @@ const renderChildren = ({ children }: ButtonProps) => {
 }
 // 解决ts 写了defaultProps  使用仍然需要必填的问题
 const Button: React.SFC<ButtonProps> & { defaultProps: Partial<ButtonProps> } = props => {
-  const { style, htmlType, disabled } = props
+  const { style, htmlType, disabled, prefixCls } = props
   return (
-    <button
-      onClick={e => handleClick(e, props)}
-      type={htmlType}
-      className={getClassName(props)}
-      style={style}
-      disabled={disabled}
-    >
-      {renderLoading(props)}
-      {renderIcon(props)}
-      {renderChildren(props)}
-    </button>
+    <div className={`${prefixCls}-button_btn`}>
+      <button
+        onClick={e => handleClick(e, props)}
+        type={htmlType}
+        className={getClassName(props)}
+        style={style}
+        disabled={disabled}
+      >
+        {renderLoading(props)}
+        {renderIcon(props)}
+        {renderChildren(props)}
+      </button>
+    </div>
   )
 }
 

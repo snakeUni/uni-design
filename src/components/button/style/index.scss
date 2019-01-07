@@ -2,69 +2,76 @@
 
 $btn: 'uni-btn';
 
-.#{$btn} {
-  font-size: $font-size-normal;
+.#{$btn}-button_btn {
   display: inline-block;
-  cursor: pointer;
-  outline: none;
-  border-radius: $border-radius-normal;
-  height: 32px;
-  line-height: $line-height-normal;
-  padding: 0  15px;
-  background: $color-brand-normal;
-  border: 0;
-  color: #fff;
 
-  &:hover:not(:disabled) {
-    opacity: 0.8;
-  }
+  .#{$btn} {
+    font-size: $font-size-normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    outline: none;
+    border-radius: $border-radius-normal;
+    height: 32px;
+    line-height: $line-height-normal;
+    padding: 0  15px;
+    background: $color-brand-normal;
+    border: 0;
+    color: #fff;
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 
-  &:active {
-    background: $color-brand-deep;
-  }
-
-  &.#{$btn}-warning {
-    background: $color-warning-deep;
-
-    &:active {
-      background: $color-warning-weight;
-    }
-  }
-
-  &.#{$btn}-ghost {
-    background: #fff;
-    color: $color-text-title-content-1;
-    border-width: 1px;
-    border-style: solid;
-    border-color: $color-text-title-content-1;
-
-    &:hover {
-      border-color: $color-brand-normal;
-      color: $color-brand-normal;
+    &:hover:not(:disabled) {
+      opacity: 0.8;
     }
 
     &:active {
-      border-color: $color-brand-deep;
-      color: $color-brand-deep;
+      background: $color-brand-deep;
     }
-  }
 
-  &.#{$btn}-large {
-    font-size: $font-size-large;
-    height: 36px;
-  }
+    &.#{$btn}-warning {
+      background: $color-warning-deep;
 
-  &.#{$btn}-small {
-    font-size: $font-size-small;
-    height: 28px;
-  }
+      &:active {
+        background: $color-warning-weight;
+      }
+    }
 
-  &.#{$btn}-disabled {
-    background: $color-text-disabled;
-    cursor: not-allowed;
-  }
+    &.#{$btn}-ghost {
+      background: #fff;
+      color: $color-text-title-content-1;
+      border-width: 1px;
+      border-style: solid;
+      border-color: $color-text-title-content-1;
 
-  .uni-icon {
-    margin-right: 5px;
+      &:hover {
+        border-color: $color-brand-normal;
+        color: $color-brand-normal;
+      }
+
+      &:active {
+        border-color: $color-brand-deep;
+        color: $color-brand-deep;
+      }
+    }
+
+    &.#{$btn}-large {
+      font-size: $font-size-large;
+      height: 36px;
+    }
+
+    &.#{$btn}-small {
+      font-size: $font-size-small;
+      height: 28px;
+    }
+
+    &.#{$btn}-disabled {
+      background: $color-text-disabled;
+      cursor: not-allowed;
+    }
+
+    .uni-icon {
+      margin-right: 5px;
+    }
   }
 }

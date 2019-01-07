@@ -1,6 +1,7 @@
 import  React from "react";
 import { storiesOf } from "@storybook/react";
 import Input from '../src/components/input'
+import Upload from '../src/components/upload'
 
 class InputDemo extends React.Component {
   state = {
@@ -39,6 +40,23 @@ class InputDemo extends React.Component {
   }
 }
 
+class UploadDemo extends React.Component {
+  state = {
+    files: []
+  }
+  handleChange = files => {
+    console.log(files)
+    this.setState({ files })
+  }
+  render() {
+    return (
+      <div>
+        <Upload fileList={this.state.files} onChange={this.handleChange}/>
+      </div>
+    )
+  }
+}
+
 storiesOf('data entry', module)
 .add('Input', () => {
   return (
@@ -48,4 +66,11 @@ storiesOf('data entry', module)
       </div>
     </div>
   )  
+})
+.add('Upload', () => {
+  return (
+    <div>
+      <UploadDemo />
+    </div>
+  )
 })
