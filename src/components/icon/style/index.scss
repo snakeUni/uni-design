@@ -4,12 +4,13 @@ $icon: 'uni-icon';
 
 @font-face {
   font-family: 'uniIconFont';  /* project id 989577 */
-  src: url('//at.alicdn.com/t/font_989577_y9r4q4ijnr.eot');
+  src: url('//at.alicdn.com/t/font_989577_f667ngek6sg.eot');
   src:
-    url('//at.alicdn.com/t/font_989577_y9r4q4ijnr.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_989577_y9r4q4ijnr.woff') format('woff'),
-    url('//at.alicdn.com/t/font_989577_y9r4q4ijnr.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_989577_y9r4q4ijnr.svg#iconfont') format('svg');
+    url('//at.alicdn.com/t/font_989577_f667ngek6sg.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_989577_f667ngek6sg.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_989577_f667ngek6sg.woff') format('woff'),
+    url('//at.alicdn.com/t/font_989577_f667ngek6sg.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_989577_f667ngek6sg.svg#iconfont') format('svg');
 }
 
 @keyframes loadingSpin {
@@ -171,4 +172,10 @@ $icon: 'uni-icon';
   &-caret-left::before { content: "\e8ef"; }
 
   &-search::before { content: "\e8f0"; }
+
+  &-eye-fill::before { content: "\e869"; }
+
+  &-eye::before { content: "\eb46"; }
+
+  &-eye-close::before { content: "\e7b5"; }
 }

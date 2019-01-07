@@ -1,0 +1,33 @@
+@import '../../style/mixin.scss';
+@import '../../style/base.scss';
+
+$upload: 'uni-upload';
+
+.#{$upload} {
+  &-default {
+    .#{$upload}-image {
+      position: relative;
+      padding: 8px;
+      border: 1px solid #d9d9d9;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: 2s all ease-in-out;
+      @include round(4px);
+
+      img {
+        width: 48px;
+        height: 48px;
+      }
+    }
+
+    .#{$upload}-operation {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+    }
+  }
+
+  .uni-icon {
+    cursor: pointer;
+  }
+}
