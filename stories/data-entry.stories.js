@@ -51,7 +51,13 @@ class UploadDemo extends React.Component {
   render() {
     return (
       <div>
-        <Upload fileList={this.state.files} onChange={this.handleChange}/>
+        <Upload fileList={this.state.files} onChange={this.handleChange} preview/>
+        <div style={{ marginTop: 20 }}>
+          <Upload fileList={this.state.files} onChange={this.handleChange} type="card" preview/>
+        </div>
+        <div style={{ marginTop: 20 }}>
+          <Upload fileList={this.state.files} onChange={this.handleChange} type="card" preview multiple/>
+        </div>
       </div>
     )
   }
