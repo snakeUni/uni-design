@@ -1,14 +1,17 @@
 {
   "compilerOptions": {
     "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
     "moduleResolution": "node",
-    "declaration": true,
     "experimentalDecorators": true,
+    "suppressImplicitAnyIndexErrors": true,
     "jsx": "react",
     "noUnusedParameters": true,
     "noUnusedLocals": true,
     "target": "es5",
-    "lib": ["dom", "es7"]
+    "lib": ["es5", "es6", "es7", "es2017", "dom"],
+    "emitDecoratorMetadata": true
   },
   "exclude": ["node_modules", "lib", "es"],
   "include": ["src"]
