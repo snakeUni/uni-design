@@ -2,6 +2,7 @@ import  React from "react";
 import { storiesOf } from "@storybook/react";
 import Input from '../src/components/input'
 import Upload from '../src/components/upload'
+import { Checkbox, CheckboxGroup } from '../src/components/checkbox'
 
 class InputDemo extends React.Component {
   state = {
@@ -63,6 +64,53 @@ class UploadDemo extends React.Component {
   }
 }
 
+class CheckboxDemo extends React.Component {
+  state = {
+    checked: false,
+    checked1: true,
+    value: []
+  }
+
+  options = [{
+    label: '红色',
+    value: 1
+  },{
+    label: '蓝色',
+    value: 2
+  }]
+
+  handleChange = checked => {
+    console.log('checked', checked)
+    this.setState({ checked })
+  }
+
+  handleChange1 = checked1 => {
+    console.log('checked', checked1)
+    this.setState({ checked1 })
+  }
+
+  handleChange3 = (value) => {
+    console.log(value)
+    this.setState({ value })
+  }
+
+  render() {
+    return (
+      <div>
+        <Checkbox onChange={this.handleChange} checked={this.state.checked}>
+          checkbox
+        </Checkbox>
+        <Checkbox onChange={this.handleChange1} checked={this.state.checked1}>
+          checkbox
+        </Checkbox>
+        <div style={{ marginTop: 20 }}>
+          <CheckboxGroup options={this.options} onChange={this.handleChange3} value={this.state.value}/>
+        </div>
+      </div>
+    )
+  }
+}
+
 storiesOf('data entry', module)
 .add('Input', () => {
   return (
@@ -77,6 +125,13 @@ storiesOf('data entry', module)
   return (
     <div>
       <UploadDemo />
+    </div>
+  )
+})
+.add('Checkbox', () => {
+  return (
+    <div>
+      <CheckboxDemo />
     </div>
   )
 })

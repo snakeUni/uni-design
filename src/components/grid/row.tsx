@@ -19,7 +19,7 @@ const getClassNames = ({ align, justify }: RowProps) => {
   })
 }
 
-const Row: React.SFC<RowProps & { defaultProps: Partial<RowProps> }> = props => {
+const Row: React.SFC<RowProps> & { defaultProps: Partial<RowProps> } = props => {
   const { children, style, gutter } = props
   const classStr = getClassNames(props)
   const rowStyle =

@@ -151,7 +151,7 @@ const renderFiles = (props: UploadProps) => {
   })
 }
 
-const Upload: React.SFC<UploadProps & { default: Partial<UploadProps> }> = props => {
+const Upload: React.SFC<UploadProps> & { defaultProps: Partial<UploadProps> } = props => {
   const classStr = getClassNames(props)
   return <div className={classStr}>{renderFiles(props)}</div>
 }

@@ -124,10 +124,23 @@ const renderSuffix = ({ suffix }: InputProps) => {
   return null
 }
 
-const renderClearIcon = ({ disabled, value, defaultValue, clear, onChange }: InputProps) => {
+const renderClearIcon = (
+  { disabled, value, defaultValue, clear, onChange }: InputProps,
+  inputRef: any
+) => {
   const newValue = normalizeValue(value || defaultValue)
   if (!disabled && newValue && newValue.length && clear) {
-    return <Icon type="close-circle" onClick={() => onChange('')} size={16} color="#999" />
+    return (
+      <Icon
+        type="close-circle"
+        onClick={() => {
+          onChange('')
+          ;(inputRef.current as any).focus()
+        }}
+        size={16}
+        color="#999"
+      />
+    )
   }
   return null
 }
@@ -189,7 +202,7 @@ const Input: React.SFC<InputProps> & { defaultProps: Partial<InputProps> } = pro
               onBlur={e => handleBlur(restProps.value, e, props)}
               {...restProps}
             />
-            {renderClearIcon(props)}
+            {renderClearIcon(props, inputRef)}
           </div>
           {renderAddonAfter(props)}
         </div>
