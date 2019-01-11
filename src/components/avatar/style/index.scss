@@ -1,5 +1,4 @@
 @import '../../style/index.scss';
-
 $avatar: 'uni-avatar';
 
 .#{$avatar} {
@@ -52,7 +51,8 @@ $avatar: 'uni-avatar';
   }
 
   &-square {
-    @include round($border-radius-large); }
+    @include round($border-radius-large);
+  }
 
   &-circle {
     @include round(50%);

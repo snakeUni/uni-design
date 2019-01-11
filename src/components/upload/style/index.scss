@@ -1,5 +1,4 @@
-@import '../../style/mixin.scss';
-@import '../../style/base.scss';
+@import '../../style/index.scss';
 
 $upload: 'uni-upload';
 
@@ -122,7 +121,8 @@ $upload: 'uni-upload';
           width: 40px;
           height: 1px;
           background-color: $color-text-hint;
-          @include center; }
+          @include center;
+        }
 
         &::after {
           content: ' ';

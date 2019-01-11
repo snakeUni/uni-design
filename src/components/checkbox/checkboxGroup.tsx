@@ -54,6 +54,7 @@ const renderOptions = (props: CheckGroupProps) => {
       </React.Fragment>
     )
   }
+  return null
 }
 
 const CheckboxGroup: React.SFC<

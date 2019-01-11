@@ -52,4 +52,5 @@ export interface CheckGroupProps {
   options: Array<OptionValue>
   // value 指定选中 的项
   value: string[]
+  children?: React.ReactNode
 }
