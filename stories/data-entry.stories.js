@@ -2,6 +2,7 @@ import  React from "react";
 import { storiesOf } from "@storybook/react";
 import Input from '../src/components/input'
 import Upload from '../src/components/upload'
+import { Checkbox, CheckboxGroup } from '../src/components/checkbox'
 
 class InputDemo extends React.Component {
   state = {
@@ -51,7 +52,92 @@ class UploadDemo extends React.Component {
   render() {
     return (
       <div>
-        <Upload fileList={this.state.files} onChange={this.handleChange}/>
+        <Upload fileList={this.state.files} onChange={this.handleChange} preview/>
+        <div style={{ marginTop: 20 }}>
+          <Upload fileList={this.state.files} onChange={this.handleChange} type="card" preview/>
+        </div>
+        <div style={{ marginTop: 20 }}>
+          <Upload fileList={this.state.files} onChange={this.handleChange} type="card" preview multiple/>
+        </div>
+      </div>
+    )
+  }
+}
+
+class CheckboxDemo extends React.Component {
+  state = {
+    checked: false,
+    checked1: true,
+    value: []
+  }
+
+  options = [{
+    label: '红色',
+    value: 1
+  },{
+    label: '蓝色',
+    value: 2
+  }, {
+    label: '绿色',
+    value: 3
+  }]
+
+  handleChange = checked => {
+    console.log('checked', checked)
+    this.setState({ checked })
+  }
+
+  handleChange1 = checked1 => {
+    console.log('checked', checked1)
+    this.setState({ checked1 })
+  }
+
+  handleChange3 = (value) => {
+    console.log(value)
+    this.setState({ value })
+  }
+
+  handleChange4 = checked => {
+    if (checked) {
+      this.setState({ value: [1, 2, 3] })
+    } else {
+      this.setState({ value: [] })
+    }
+  }
+
+  render() {
+    const { value } = this.state
+    return (
+      <div>
+        <Checkbox onChange={this.handleChange} checked={this.state.checked}>
+          checkbox
+        </Checkbox>
+        <Checkbox onChange={this.handleChange1} checked={this.state.checked1}>
+          checkbox
+        </Checkbox>
+        <div style={{ marginTop: 20 }}>
+          <CheckboxGroup options={this.options} onChange={this.handleChange3} value={this.state.value}/>
+        </div>
+        <div style={{ marginTop: 20 }}>
+          <Checkbox onChange={this.handleChange} checked={this.state.checked} indeterminate>半选</Checkbox>
+        </div>
+        <p>群组</p>
+        <div style={{ marginTop: 20 }}>
+          <Checkbox onChange={this.handleChange4} checked={this.state.value.length === this.options.length} indeterminate={value.length < this.options.length && value.length > 0}>半选</Checkbox>
+        </div>
+        <div>
+          <CheckboxGroup options={this.options} onChange={this.handleChange3} value={this.state.value}/>
+        </div>
+        <div style={{ marginTop: 20 }}>
+          <Checkbox onChange={this.handleChange1} checked={this.state.checked1} disabled>
+            选中不可用
+          </Checkbox>
+        </div>
+        <div style={{ marginTop: 20 }}>
+          <Checkbox checked={false} disabled>
+            没有选中不可用
+          </Checkbox>
+        </div>
       </div>
     )
   }
@@ -71,6 +157,13 @@ storiesOf('data entry', module)
   return (
     <div>
       <UploadDemo />
+    </div>
+  )
+})
+.add('Checkbox', () => {
+  return (
+    <div>
+      <CheckboxDemo />
     </div>
   )
 })

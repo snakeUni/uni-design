@@ -1,6 +1,7 @@
 import * as React from 'react'
 import ClassNames from 'classnames'
 import * as warning from 'warning'
+import * as Animate from 'rc-animate'
 import { UploadProps } from './interface'
 import Icon from '../icon'
 import Button from '../button'
@@ -113,7 +114,7 @@ const renderFiles = (props: UploadProps) => {
             </Button>
           ) : (
             <div className={`${prefixCls}-add-image`} onClick={() => addImage(inputRef)}>
-              +
+              <div className={`${prefixCls}-add-text`} />
             </div>
           )}
           <input
@@ -129,27 +130,35 @@ const renderFiles = (props: UploadProps) => {
       )
     }
     return (
-      <div className={`${prefixCls}-item ${prefixCls}-image`} key={`image-${index}`}>
-        <img src={file.url} />
-        <div className={`${prefixCls}-operation`}>
-          {preview ? (
-            <span className={`${prefixCls}-preview`} onClick={() => onPreview(file, index)}>
-              <Icon type="eye-fill" />
+      <Animate
+        component=""
+        transitionName={isDefault ? `${prefixCls}-animate` : `${prefixCls}-inline`}
+        key={`image-${index}`}
+      >
+        <div className={`${prefixCls}-item ${prefixCls}-image`}>
+          <div className={`${prefixCls}-item-info`}>
+            <img src={file.url} />
+          </div>
+          <div className={`${prefixCls}-operation`}>
+            {preview && !isDefault ? (
+              <span className={`${prefixCls}-preview`} onClick={() => onPreview(file, index)}>
+                <Icon type="eye" />
+              </span>
+            ) : null}
+            <span
+              className={`${prefixCls}-remove`}
+              onClick={() => handleRemove(props, isDefault ? index - 1 : index, file)}
+            >
+              <Icon type={`${isDefault ? 'close-circle-fill' : 'delete'}`} size={16} />
             </span>
-          ) : null}
-          <span
-            className={`${prefixCls}-remove`}
-            onClick={() => handleRemove(props, isDefault ? index - 1 : index, file)}
-          >
-            <Icon type="close-circle-fill" size={16} color="#999" />
-          </span>
+          </div>
         </div>
-      </div>
+      </Animate>
     )
   })
 }
 
-const Upload: React.SFC<UploadProps & { default: Partial<UploadProps> }> = props => {
+const Upload: React.SFC<UploadProps> & { defaultProps: Partial<UploadProps> } = props => {
   const classStr = getClassNames(props)
   return <div className={classStr}>{renderFiles(props)}</div>
 }
