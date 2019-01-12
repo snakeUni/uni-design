@@ -1,6 +1,7 @@
 import * as React from 'react'
 import ClassNames from 'classnames'
 import * as warning from 'warning'
+import * as Animate from 'rc-animate'
 import { UploadProps } from './interface'
 import Icon from '../icon'
 import Button from '../button'
@@ -129,24 +130,30 @@ const renderFiles = (props: UploadProps) => {
       )
     }
     return (
-      <div className={`${prefixCls}-item ${prefixCls}-image`} key={`image-${index}`}>
-        <div className={`${prefixCls}-item-info`}>
-          <img src={file.url} />
-        </div>
-        <div className={`${prefixCls}-operation`}>
-          {preview && !isDefault ? (
-            <span className={`${prefixCls}-preview`} onClick={() => onPreview(file, index)}>
-              <Icon type="eye" />
+      <Animate
+        component=""
+        transitionName={isDefault ? `${prefixCls}-animate` : `${prefixCls}-inline`}
+        key={`image-${index}`}
+      >
+        <div className={`${prefixCls}-item ${prefixCls}-image`}>
+          <div className={`${prefixCls}-item-info`}>
+            <img src={file.url} />
+          </div>
+          <div className={`${prefixCls}-operation`}>
+            {preview && !isDefault ? (
+              <span className={`${prefixCls}-preview`} onClick={() => onPreview(file, index)}>
+                <Icon type="eye" />
+              </span>
+            ) : null}
+            <span
+              className={`${prefixCls}-remove`}
+              onClick={() => handleRemove(props, isDefault ? index - 1 : index, file)}
+            >
+              <Icon type={`${isDefault ? 'close-circle-fill' : 'delete'}`} size={16} />
             </span>
-          ) : null}
-          <span
-            className={`${prefixCls}-remove`}
-            onClick={() => handleRemove(props, isDefault ? index - 1 : index, file)}
-          >
-            <Icon type={`${isDefault ? 'close-circle-fill' : 'delete'}`} size={16} />
-          </span>
+          </div>
         </div>
-      </div>
+      </Animate>
     )
   })
 }

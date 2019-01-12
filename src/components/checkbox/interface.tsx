@@ -7,29 +7,29 @@ export interface CheckboxProps {
   // onChange 变化时候发生的回调
   onChange: (checked: boolean | number | string) => void
   // autofocus 默认聚焦状态
-  autoFocus: boolean
+  autoFocus?: boolean
   // disabled 默认为false
-  disabled: boolean
+  disabled?: boolean
   // className
   className?: string
   // 半选状态 默认为false
-  indeterminate: boolean
+  indeterminate?: boolean
   // 默认选中 默认为false
   defaultChecked?: boolean
   // onBlur
-  onBlur: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onBlur?: (e: React.ChangeEvent<HTMLInputElement>) => void
   // onFocus
-  onFocus: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onFocus?: (e: React.ChangeEvent<HTMLInputElement>) => void
   // prefixCls
-  prefixCls: string
+  prefixCls?: string
   // onMouseEnter
-  onMouseEnter: React.MouseEventHandler<any>
+  onMouseEnter?: React.MouseEventHandler<any>
   // onMouseLeave
-  onMouseLeave: React.MouseEventHandler<any>
+  onMouseLeave?: React.MouseEventHandler<any>
   // onKeyPress
-  onKeyPress: React.KeyboardEventHandler<any>
+  onKeyPress?: React.KeyboardEventHandler<any>
   // onKeyDown
-  onKeyDown: React.KeyboardEventHandler<any>
+  onKeyDown?: React.KeyboardEventHandler<any>
   children?: React.ReactNode
 }
 
@@ -52,5 +52,4 @@ export interface CheckGroupProps {
   options: Array<OptionValue>
   // value 指定选中 的项
   value: string[]
-  children?: React.ReactNode
 }

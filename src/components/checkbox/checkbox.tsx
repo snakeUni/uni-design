@@ -5,6 +5,8 @@ import { omit } from '../utils'
 
 import './style/index.scss'
 
+const { useRef } = React
+
 const noop = () => {}
 
 const defaultProps: CheckboxProps = {
@@ -54,10 +56,17 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>, { onChange }: Chec
 const Checkbox: React.SFC<CheckboxProps> & { defaultProps: Partial<CheckboxProps> } = props => {
   const { children, prefixCls, onMouseEnter, onMouseLeave } = props
   const otherProps = getOtherProps(props)
+  const checkboxRef = useRef(null)
   return (
     <label className={getClassName(props)} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
       <span className={`${prefixCls}-select`}>
-        <input type="checkbox" onChange={e => handleChange(e, props)} {...otherProps} />
+        <input
+          type="checkbox"
+          onChange={e => handleChange(e, props)}
+          {...otherProps}
+          ref={checkboxRef}
+        />
+        <span className={`${prefixCls}-select-inner`} />
       </span>
       <span className={`${prefixCls}-label`}>{children}</span>
     </label>

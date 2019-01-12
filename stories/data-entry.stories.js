@@ -77,6 +77,9 @@ class CheckboxDemo extends React.Component {
   },{
     label: '蓝色',
     value: 2
+  }, {
+    label: '绿色',
+    value: 3
   }]
 
   handleChange = checked => {
@@ -94,7 +97,16 @@ class CheckboxDemo extends React.Component {
     this.setState({ value })
   }
 
+  handleChange4 = checked => {
+    if (checked) {
+      this.setState({ value: [1, 2, 3] })
+    } else {
+      this.setState({ value: [] })
+    }
+  }
+
   render() {
+    const { value } = this.state
     return (
       <div>
         <Checkbox onChange={this.handleChange} checked={this.state.checked}>
@@ -105,6 +117,26 @@ class CheckboxDemo extends React.Component {
         </Checkbox>
         <div style={{ marginTop: 20 }}>
           <CheckboxGroup options={this.options} onChange={this.handleChange3} value={this.state.value}/>
+        </div>
+        <div style={{ marginTop: 20 }}>
+          <Checkbox onChange={this.handleChange} checked={this.state.checked} indeterminate>半选</Checkbox>
+        </div>
+        <p>群组</p>
+        <div style={{ marginTop: 20 }}>
+          <Checkbox onChange={this.handleChange4} checked={this.state.value.length === this.options.length} indeterminate={value.length < this.options.length && value.length > 0}>半选</Checkbox>
+        </div>
+        <div>
+          <CheckboxGroup options={this.options} onChange={this.handleChange3} value={this.state.value}/>
+        </div>
+        <div style={{ marginTop: 20 }}>
+          <Checkbox onChange={this.handleChange1} checked={this.state.checked1} disabled>
+            选中不可用
+          </Checkbox>
+        </div>
+        <div style={{ marginTop: 20 }}>
+          <Checkbox checked={false} disabled>
+            没有选中不可用
+          </Checkbox>
         </div>
       </div>
     )

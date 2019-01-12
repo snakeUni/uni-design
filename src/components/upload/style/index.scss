@@ -152,4 +152,54 @@ $upload: 'uni-upload';
   .uni-icon {
     cursor: pointer;
   }
+
+  &-animate-leave {
+    animation: uploadAnimateOut;
+  }
+
+  &-animate-enter {
+    animation: uploadAnimateIn;
+  }
+
+  &-inline-enter {
+    animation: uploadAnimateInlineIn;
+  }
+
+  &-inline-leave {
+    animation: uploadAnimateInlineOut;
+  }
+}
+@keyframes uploadAnimateIn {
+  from {
+    height: 0;
+    margin: 0;
+    opacity: 0;
+    padding: 0;
+  }
+}
+@keyframes uploadAnimationOut {
+  to {
+    height: 0;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+  }
+}
+@keyframes uploadAnimateInlineIn {
+  from {
+    width: 0;
+    height: 0;
+    margin: 0;
+    opacity: 0;
+    padding: 0;
+  }
+}
+@keyframes uploadAnimateInlineOut {
+  to {
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+  }
 }

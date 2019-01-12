@@ -57,9 +57,9 @@ const renderOptions = (props: CheckGroupProps) => {
   return null
 }
 
-const CheckboxGroup: React.SFC<
-  CheckGroupProps & { defaultProps: Partial<CheckGroupProps> }
-> = props => {
+const CheckboxGroup: React.SFC<CheckGroupProps> & {
+  defaultProps: Partial<CheckGroupProps>
+} = props => {
   return <div className={`${prefixCls}-group`}>{renderOptions(props)}</div>
 }
 ;(CheckboxGroup as any).checkbox = Checkbox

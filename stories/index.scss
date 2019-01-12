@@ -17,3 +17,7 @@ pre {
   background-color: #ff5454;
   padding: 20px; 
 }
+*, *::before, *::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}

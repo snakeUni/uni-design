@@ -114,7 +114,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.6",
-    "react-transition-group": "^2.5.2",
+    "rc-animate": "^2.6.0",
     "warning": "^4.0.2"
   },
   "peerDependencies": {
