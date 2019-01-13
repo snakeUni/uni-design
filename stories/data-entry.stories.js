@@ -3,6 +3,8 @@ import { storiesOf } from "@storybook/react";
 import Input from '../src/components/input'
 import Upload from '../src/components/upload'
 import { Checkbox, CheckboxGroup } from '../src/components/checkbox'
+import { Radio, RadioGroup } from '../src/components/radio'
+
 
 class InputDemo extends React.Component {
   state = {
@@ -166,4 +168,45 @@ storiesOf('data entry', module)
       <CheckboxDemo />
     </div>
   )
+})
+.add('Radio', () => {
+  class RadioDemo extends React.Component {
+    state = {
+      checked: false,
+      value: ''
+    }
+    options = [{
+      label: '红色',
+      value: 1
+    },{
+      label: '蓝色',
+      value: 2
+    }, {
+      label: '绿色',
+      value: 3
+    }]
+    handleChange = checked => {
+      this.setState({ checked })
+    }
+    handleChange2 = value => {
+      this.setState({ value })
+    }
+    render() {
+      return (
+        <div>
+          <Radio onChange={this.handleChange} checked={this.state.checked}>按钮</Radio>
+          <div>
+            <RadioGroup options={this.options} value={this.state.value} onChange={this.handleChange2}/>
+          </div>
+          <div>
+            <Radio onChange={this.handleChange} checked={this.state.checked} disabled>按钮</Radio>
+          </div>
+          <div>
+            <Radio checked disabled>按钮</Radio>
+          </div>
+        </div>
+      )
+    }
+  }
+  return <RadioDemo />
 })
