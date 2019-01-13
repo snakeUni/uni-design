@@ -11,6 +11,8 @@ export interface RadioProps {
   disabled: boolean
   // onChange
   onChange: () => void
+  // className
+  className?: string
 }
 
 export interface OptionTypes {
@@ -19,8 +21,6 @@ export interface OptionTypes {
   disabled?: boolean
 }
 
-export type SizeTypes = 'small' | 'normal' | 'large'
-
 export type func = (value: any) => void
 
 export interface RadioGroupProps {
@@ -28,10 +28,10 @@ export interface RadioGroupProps {
   options: Array<OptionTypes>
   // onChange
   onChange: func
-  // size
-  size: SizeTypes
   // value 当前选中的值
   value?: any
   //disabled 禁用所有
   disabled: boolean
+  // className
+  className?: string
 }

@@ -8,15 +8,13 @@ const noop = () => {}
 const defaultProps: RadioGroupProps = {
   options: [],
   disabled: false,
-  onChange: noop,
-  size: 'normal'
+  onChange: noop
 }
 
 const prefixCls = 'uni-radio-group'
 
-const getClassNames = ({ disabled, size }: RadioGroupProps) => {
-  return ClassNames(prefixCls, {
-    [`${prefixCls}-${size}`]: !!size,
+const getClassNames = ({ disabled, className }: RadioGroupProps) => {
+  return ClassNames(prefixCls, className, {
     [`${prefixCls}-disabled`]: disabled
   })
 }

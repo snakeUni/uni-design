@@ -6,26 +6,6 @@ import './style/index.scss'
 
 const noop = () => {}
 
-const rxTwoCNChar = /^[\u4e00-\u9fa5]{2}$/
-const isTwoCNChar = rxTwoCNChar.test.bind(rxTwoCNChar)
-function isString(str: any) {
-  return typeof str === 'string'
-}
-
-// Insert one space between two chinese characters automatically.
-function insertSpace(child: any) {
-  if (isString(child.type) && isTwoCNChar(child.props.children)) {
-    return React.cloneElement(child, {}, child.props.children.split('').join(''))
-  }
-  if (isString(child)) {
-    if (isTwoCNChar(child)) {
-      child = child.split('').join('')
-    }
-    return <span>{child}</span>
-  }
-  return child
-}
-
 const defaultProps: ButtonProps = {
   disabled: false,
   loading: false,
@@ -71,12 +51,9 @@ const renderIcon = ({ icon }: ButtonProps) => {
   return null
 }
 
-const renderChildren = ({ children }: ButtonProps) => {
-  return React.Children.map(children, insertSpace)
-}
 // 解决ts 写了defaultProps  使用仍然需要必填的问题
 const Button: React.SFC<ButtonProps> & { defaultProps: Partial<ButtonProps> } = props => {
-  const { style, htmlType, disabled, prefixCls } = props
+  const { style, htmlType, disabled, prefixCls, children } = props
   return (
     <div className={`${prefixCls}-button_btn`}>
       <button
@@ -88,7 +65,7 @@ const Button: React.SFC<ButtonProps> & { defaultProps: Partial<ButtonProps> } = 
       >
         {renderLoading(props)}
         {renderIcon(props)}
-        {renderChildren(props)}
+        <span>{children}</span>
       </button>
     </div>
   )

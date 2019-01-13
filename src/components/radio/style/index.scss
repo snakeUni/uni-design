@@ -126,6 +126,8 @@ $radio: 'uni-radio';
   }
 
   &-disabled {
+    cursor: not-allowed;
+
     .#{$radio}-select {
       cursor: not-allowed;
     }

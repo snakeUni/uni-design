@@ -16,8 +16,8 @@ const defaultProps: RadioProps = {
   autoFocus: false
 }
 
-const getClassNames = ({ checked, disabled, autoFocus }: RadioProps) => {
-  return ClassNames(prefixCls, {
+const getClassNames = ({ checked, disabled, autoFocus, className }: RadioProps) => {
+  return ClassNames(prefixCls, className, {
     [`${prefixCls}-checked`]: checked,
     [`${prefixCls}-disabled`]: disabled,
     [`${prefixCls}-focus`]: autoFocus

@@ -185,6 +185,18 @@ storiesOf('data entry', module)
       label: '绿色',
       value: 3
     }]
+    options1 = [{
+      label: '红色',
+      value: 1,
+      disabled: true
+    },{
+      label: '蓝色',
+      value: 2,
+      disabled: true
+    }, {
+      label: '绿色',
+      value: 3
+    }]
     handleChange = checked => {
       this.setState({ checked })
     }
@@ -194,15 +206,23 @@ storiesOf('data entry', module)
     render() {
       return (
         <div>
+          <p>单个按钮</p>
           <Radio onChange={this.handleChange} checked={this.state.checked}>按钮</Radio>
-          <div>
+          <div style={{ marginTop: 20 }}>
+            <p>多个单选按钮</p>
             <RadioGroup options={this.options} value={this.state.value} onChange={this.handleChange2}/>
           </div>
-          <div>
+          <div style={{ marginTop: 20 }}>
+            <p>单选按钮不可用</p>
             <Radio onChange={this.handleChange} checked={this.state.checked} disabled>按钮</Radio>
           </div>
-          <div>
+          <div style={{ marginTop: 20 }}>
+            <p>单选按钮选中不可用</p>
             <Radio checked disabled>按钮</Radio>
+          </div>
+          <div style={{ marginTop: 20 }}>
+            <p>按钮组不可用</p>
+            <RadioGroup options={this.options1} value={this.state.value} onChange={this.handleChange2} />
           </div>
         </div>
       )

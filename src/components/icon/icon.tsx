@@ -6,7 +6,7 @@ import './style/index.scss'
 const noop = () => {}
 
 interface IconProps extends React.HTMLAttributes<HTMLElement> {
-  size: string | number
+  size?: string | number
   type?: string
   prefixCls: string
   className?: string
@@ -15,7 +15,6 @@ interface IconProps extends React.HTMLAttributes<HTMLElement> {
 }
 
 const defaultProps: IconProps = {
-  size: 24,
   prefixCls: 'uni-icon',
   onClick: noop
 }
@@ -28,10 +27,13 @@ const Icon: React.SFC<IconProps> & { defaultProps: Partial<IconProps> } = props 
   const { prefixCls, type, size, color, ...rest } = props
   warning(!!type, 'type should be required for icon')
   const classStr = ClassNames(prefixCls, `${prefixCls}-${type}`)
-  const style = {
-    fontSize: size,
+  let style = {
     color
   }
+  if (size) {
+    ;(style as any).fontSize = size
+  }
+
   return <i className={classStr} style={style} onClick={e => handleClick(e, props)} {...rest} />
 }
 
