@@ -4,6 +4,7 @@ import Input from '../src/components/input'
 import Upload from '../src/components/upload'
 import { Checkbox, CheckboxGroup } from '../src/components/checkbox'
 import { Radio, RadioGroup } from '../src/components/radio'
+import Switch from '../src/components/switch'
 
 
 class InputDemo extends React.Component {
@@ -229,4 +230,32 @@ storiesOf('data entry', module)
     }
   }
   return <RadioDemo />
+})
+.add('Switch', () => {
+  class SwitchDemo extends React.Component {
+    state = {
+      checked: false
+    }
+    render() {
+      return (
+        <div>
+          <p>默认颜色</p>
+          <Switch checked={this.state.checked} onChange={checked => {this.setState({ checked })}}/>
+          <p>不可用</p>
+          <Switch checked={this.state.checked}  disabled/>
+          <Switch checked={true} disabled />
+          <p>随便配色</p>
+          <Switch checked={this.state.checked} onChange={checked => {this.setState({ checked })}} color="blue"/>
+          <Switch checked={this.state.checked} onChange={checked => {this.setState({ checked })}} color="green"/>
+          <Switch checked={this.state.checked} onChange={checked => {this.setState({ checked })}} color="purple"/>
+          <Switch checked={this.state.checked} onChange={checked => {this.setState({ checked })}} color="orange"/>
+        </div>
+      )
+    }
+  }
+  return (
+    <div>
+      <SwitchDemo />
+    </div>
+  )
 })

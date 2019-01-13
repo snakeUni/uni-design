@@ -21,6 +21,10 @@ export interface OptionTypes {
   disabled?: boolean
 }
 
+export type SizeTypes = 'small' | 'normal' | 'large'
+
+export type ShapeTypes = 'default' | 'button'
+
 export type func = (value: any) => void
 
 export interface RadioGroupProps {
@@ -28,10 +32,14 @@ export interface RadioGroupProps {
   options: Array<OptionTypes>
   // onChange
   onChange: func
+  // size
+  size: SizeTypes
   // value 当前选中的值
   value?: any
   //disabled 禁用所有
   disabled: boolean
   // className
   className?: string
+  // 形状 默认为default
+  shape: ShapeTypes
 }
