@@ -1,0 +1,208 @@
+@import '../../style/index.scss';
+
+$steps: 'uni-steps';
+
+.#{$steps} {
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.65);
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+
+  &-horizontal {
+    .#{$steps}-item {
+      margin-right: 16px;
+      white-space: nowrap;
+
+      &-tail {
+        display: none;
+      }
+
+      &-content-describe {
+        max-width: 140px;
+        white-space: normal;
+      }
+
+      &:last-child {
+        margin-right: 0;
+
+        .#{$steps}-item-title {
+          padding-right: 0;
+        }
+      }
+    }
+  }
+
+  &-item {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    overflow: hidden;
+
+    &:last-child {
+      -webkit-box-flex: 0;
+      -webkit-flex: none;
+      -ms-flex: none;
+      flex: none;
+
+      .#{$steps}-item {
+        &-content-title::after,
+        &-tail {
+          display: none;
+        }
+      }
+    }
+
+    &-tail {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      top: 12px;
+      padding: 0 10px;
+    }
+
+    &-icon {
+      border: 1px solid rgba(0, 0, 0, 0.25);
+      width: 32px;
+      height: 32px;
+      line-height: 32px;
+      text-align: center;
+      border-radius: 32px;
+      font-size: 16px;
+      margin-right: 8px;
+      -webkit-transition: background-color 0.3s, border-color 0.3s;
+      transition: background-color 0.3s, border-color 0.3s;
+      display: inline-block;
+      vertical-align: top;
+      color: $color-text-hint;
+
+      &-text {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+
+        .uni-icon {
+          font-size: 18px;
+        }
+      }
+    }
+
+    &-finish {
+      .#{$steps}-item-icon {
+        border-color: $color-brand-normal;
+        background-color: #fff;
+
+        &-text {
+          .uni-icon {
+            color: $color-brand-normal;
+          }
+        }
+      }
+
+      .#{$steps}-item-content {
+        &-title {
+          color: rgba(0, 0, 0, 0.65);
+
+          &::after {
+            background: $color-brand-normal;
+          }
+        }
+
+        &-describe {
+          color: rgba(0, 0, 0, 0.45);
+        }
+      }
+    }
+
+    &-wait {
+      .#{$steps}-item-icon {
+        border-color: rgba(0, 0, 0, 0.25);
+        background-color: #fff;
+      }
+
+      .#{$steps}-item-content {
+        &-title {
+          color: rgba(0, 0, 0, 0.45);
+
+          &::after {
+            background-color: #e8e8e8;
+          }
+        }
+
+        &-describe {
+          color: rgba(0, 0, 0, 0.45);
+        }
+      }
+    }
+
+    &-process {
+      .#{$steps}-item {
+        &-icon {
+          background: $color-brand-normal;
+          color: #fff;
+          border-color: $color-brand-normal;
+        }
+
+        &-content {
+          &-title {
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.85);
+
+            &::after {
+              background-color: #e8e8e8;
+            }
+          }
+
+          &-describe {
+            color: rgba(0, 0, 0, 0.65);
+          }
+        }
+      }
+    }
+
+    &-content {
+      display: inline-block;
+      vertical-align: top;
+
+      &-title {
+        font-size: 16px;
+        color: rgba(0, 0, 0, 0.65);
+        display: inline-block;
+        padding-right: 16px;
+        position: relative;
+        line-height: 32px;
+
+        &::after {
+          content: '';
+          height: 1px;
+          width: 9999px;
+          background: #e8e8e8;
+          display: block;
+          position: absolute;
+          top: 16px;
+          left: 100%;
+        }
+      }
+
+      &-describe {
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.45);
+      }
+    }
+  }
+}

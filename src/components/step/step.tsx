@@ -3,6 +3,8 @@ import ClassNames from 'classnames'
 import { StepsProps, StepProps, StatusTypes } from './interface'
 import Icon from '../icon'
 
+import './style/index.scss'
+
 interface StepType {
   option: StepProps
   index: number
@@ -29,7 +31,7 @@ const getClassNames = ({ direction, size, labelPlacement, className }: StepsProp
   return ClassNames(prefixCls, className, {
     [`${prefixCls}-${direction}`]: direction,
     [`${prefixCls}-${size}`]: size,
-    [`${prefixCls}-${labelPlacement}`]: labelPlacement
+    [`${prefixCls}-label-${labelPlacement}`]: labelPlacement
   })
 }
 
@@ -56,12 +58,16 @@ const renderIcon = ({ icon, index, status }: IconType) => {
 const renderStep = ({ option, index, current }: StepType) => {
   const { status, title, describe, icon } = option
   const newStatus = getStatus(index, current)
-  const prefixCls = 'uni-step-item'
+  const prefixCls = 'uni-steps-item'
   const classStr = ClassNames(prefixCls, `${prefixCls}-${newStatus}`)
   return (
     <div className={classStr} key={`${prefixCls}-${index}`}>
       <div className={`${prefixCls}-tail`} />
-      <div className={`${prefixCls}-icon`}>{renderIcon({ index, icon, status })}</div>
+      <div className={`${prefixCls}-icon`}>
+        <span className={`${prefixCls}-icon-text`}>
+          {renderIcon({ index, icon, status: status || newStatus })}
+        </span>
+      </div>
       <div className={`${prefixCls}-content`}>
         <div className={`${prefixCls}-content-title`}>{title}</div>
         <div className={`${prefixCls}-content-describe`}>{describe}</div>
