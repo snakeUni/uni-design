@@ -1,9 +1,10 @@
-import  React from "react";
+import  React, { Component } from "react";
 import { storiesOf } from "@storybook/react";
 import Icon from '../src/components/icon'
 import Button from '../src/components/button'
 import { Row, Col } from '../src/components/grid'
 import Avatar from '../src/components/avatar'
+import Step from '../src/components/step'
 
 const types = ['check-circle', 'close-circle', 'left-circle', 'down-circle', 'minus-circle', 'plus-circle', 'right-circle', 
 'time-circle', 'up-circle', 'warning-circle', 'sync', 'undo', 'redo', 'reload', 'message', 'setting', 'adduser', 'heart', 'error', 'star',
@@ -195,6 +196,74 @@ storiesOf('data show', module)
         <Avatar src="http://img5.imgtn.bdimg.com/it/u=2479827366,1415772881&fm=26&gp=0.jpg" size={120} shape="square"/>
         <Avatar src="http://img5.imgtn.bdimg.com/it/u=2479827366,1415772881&fm=26&gp=0.jpg" shape="square"/>
       </div>
+    </div>
+  )
+})
+.add('Step', () => {
+  class StepDemo extends Component {
+    state = {
+      current: 0
+    }
+    options = [{
+      title: '第一步',
+      describe: '这是第一步的描述'
+    }, {
+      title: '第二部',
+      describe: '这是第二部的描述'
+    }, {
+      title: '第伞部',
+      describe: '这是第三部的描述'
+    }]
+    options1 = [{
+      title: '第一步',
+      describe: '这是第一步的描述',
+      icon: <Icon type="alipay-circle-fill" />
+    }, {
+      title: '第二部',
+      describe: '这是第二部的描述',
+      icon: <Icon type="heart-fill" />
+    }, {
+      title: '第伞部',
+      describe: '这是第三部的描述',
+      icon: <Icon type="QQ" />
+    }]
+
+    handleClick = () => {
+      let current = this.state.current
+      if (current === 2) {
+        current = 0
+      } else {
+        current++
+      }
+      this.setState({ current })
+    }
+    render() {
+      return (
+        <div>
+          <p>水平展示</p>
+          <Step options={this.options} current={this.state.current}/>
+          <Step options={this.options} current={this.state.current} size="small"/>
+          <div style={{ marginTop: 20 }}>
+            <Step options={this.options} current={this.state.current} labelPlacement="vertical"/>
+            <Step options={this.options} current={this.state.current} labelPlacement="vertical" size="small"/>
+          </div>
+          <p>竖直展示</p>
+          <div style={{ marginTop: 20 }}>
+            <Step options={this.options} current={this.state.current} direction="vertical" />
+            <Step options={this.options} current={this.state.current} direction="vertical" size="small"/>
+          </div>
+          <p>自定义的图标</p>
+          <Step options={this.options1} current={this.state.current}/>
+          <div style={{ marginTop: 20 }}>
+            <Button onClick={this.handleClick}>点击看class改变</Button>
+          </div>
+        </div>
+      )
+    }
+  }
+  return (
+    <div>
+      <StepDemo />
     </div>
   )
 })
