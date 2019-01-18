@@ -59,7 +59,9 @@ const renderStep = ({ option, index, current }: StepType) => {
   const { status, title, describe, icon } = option
   const newStatus = getStatus(index, current)
   const prefixCls = 'uni-steps-item'
-  const classStr = ClassNames(prefixCls, `${prefixCls}-${newStatus}`)
+  const classStr = ClassNames(prefixCls, `${prefixCls}-${newStatus}`, {
+    [`${prefixCls}-custom`]: !!icon
+  })
   return (
     <div className={classStr} key={`${prefixCls}-${index}`}>
       <div className={`${prefixCls}-tail`} />

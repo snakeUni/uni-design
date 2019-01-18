@@ -3,7 +3,7 @@
 $steps: 'uni-steps';
 
 .#{$steps} {
-  font-size: 14px;
+  font-size: 0;
   font-variant: tabular-nums;
   line-height: 1.5;
   color: rgba(0, 0, 0, 0.65);
@@ -18,7 +18,7 @@ $steps: 'uni-steps';
   display: -ms-flexbox;
   display: flex;
 
-  &-horizontal {
+  &-horizontal:not(.uni-steps-label-vertical) {
     .#{$steps}-item {
       margin-right: 16px;
       white-space: nowrap;
@@ -37,6 +37,148 @@ $steps: 'uni-steps';
 
         .#{$steps}-item-title {
           padding-right: 0;
+        }
+      }
+    }
+  }
+
+  &-vertical {
+    display: block;
+
+    .#{$steps}-item {
+      display: block;
+      overflow: visible;
+
+      &-tail {
+        position: absolute;
+        left: 16px;
+        top: 0;
+        height: 100%;
+        width: 1px;
+        padding: 38px 0 6px;
+
+        &::after {
+          height: 100%;
+          width: 1px;
+        }
+      }
+
+      &-icon {
+        float: left;
+        margin-right: 16px;
+      }
+
+      &-content {
+        min-height: 48px;
+        overflow: hidden;
+        display: block;
+
+        &-title {
+          line-height: 32px;
+
+          &::after {
+            display: none;
+          }
+        }
+
+        &-describe {
+          padding-bottom: 12px;
+        }
+      }
+
+      &:not(:last-child) {
+        &-tail {
+          display: block;
+        }
+      }
+    }
+  }
+
+  &-small {
+    .#{$steps}-item {
+      &-icon {
+        width: 24px;
+        height: 24px;
+        line-height: 24px;
+        text-align: center;
+        border-radius: 24px;
+        font-size: 12px;
+
+        &-text {
+          .uni-icon {
+            font-size: 12px;
+          }
+        }
+      }
+
+      &-content-title {
+        font-size: 14px;
+        line-height: 24px;
+        padding-right: 12px;
+
+        &::after {
+          top: 12px;
+        }
+      }
+    }
+
+    &:not(.uni-steps-vertical) {
+      .#{$steps}-item-tail {
+        top: 8px;
+      }
+    }
+
+    &.#{$steps}-vertical {
+      .#{$steps}-item-tail {
+        position: absolute;
+        left: 12px;
+        top: 0;
+        padding: 30px 0 6px;
+      }
+    }
+  }
+
+  &-large {
+    .#{$steps}-item {
+      &-icon {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        border-radius: 40px;
+        font-size: 20px;
+      }
+    }
+  }
+
+  &-label-vertical {
+    .#{$steps} {
+      &-item {
+        overflow: visible;
+
+        &-tail {
+          padding: 3.5px 24px;
+          margin-left: 51px;
+        }
+
+        &-icon {
+          display: inline-block;
+          margin-left: 36px;
+        }
+
+        &-content {
+          display: block;
+          text-align: center;
+          margin-top: 8px;
+          width: 104px;
+
+          &-title {
+            padding-right: 0;
+
+            &::after {
+              display: none;
+            }
+          }
         }
       }
     }
@@ -72,6 +214,17 @@ $steps: 'uni-steps';
       width: 100%;
       top: 12px;
       padding: 0 10px;
+
+      &::after {
+        content: '';
+        display: inline-block;
+        background: #e8e8e8;
+        height: 1px;
+        border-radius: 1px;
+        width: 100%;
+        -webkit-transition: background 0.3s;
+        transition: background 0.3s;
+      }
     }
 
     &-icon {
@@ -106,6 +259,7 @@ $steps: 'uni-steps';
       .#{$steps}-item-icon {
         border-color: $color-brand-normal;
         background-color: #fff;
+        opacity: 0.7;
 
         &-text {
           .uni-icon {
@@ -114,9 +268,17 @@ $steps: 'uni-steps';
         }
       }
 
+      .#{$steps}-item-tail {
+        &::after {
+          background-color: $color-brand-normal;
+          opacity: 0.7;
+        }
+      }
+
       .#{$steps}-item-content {
         &-title {
-          color: rgba(0, 0, 0, 0.65);
+          color: $color-brand-normal;
+          opacity: 0.7;
 
           &::after {
             background: $color-brand-normal;
@@ -124,7 +286,8 @@ $steps: 'uni-steps';
         }
 
         &-describe {
-          color: rgba(0, 0, 0, 0.45);
+          color: $color-brand-normal;
+          opacity: 0.7;
         }
       }
     }
@@ -161,7 +324,7 @@ $steps: 'uni-steps';
         &-content {
           &-title {
             font-weight: 500;
-            color: rgba(0, 0, 0, 0.85);
+            color: $color-brand-normal;
 
             &::after {
               background-color: #e8e8e8;
@@ -169,7 +332,7 @@ $steps: 'uni-steps';
           }
 
           &-describe {
-            color: rgba(0, 0, 0, 0.65);
+            color: $color-brand-normal;
           }
         }
       }
@@ -202,6 +365,31 @@ $steps: 'uni-steps';
       &-describe {
         font-size: 14px;
         color: rgba(0, 0, 0, 0.45);
+      }
+    }
+
+    &-custom {
+      .#{$steps}-item-icon {
+        background: none;
+        border: 0;
+        font-size: 24px;
+        line-height: 32px;
+        top: 0;
+        left: 0.5px;
+        width: 32px;
+        height: 32px;
+
+        &-text {
+          .uni-icon {
+            font-size: 24px;
+          }
+        }
+      }
+
+      &.#{$steps}-item-process {
+        .#{$steps}-item-icon {
+          color: $color-brand-normal;
+        }
       }
     }
   }

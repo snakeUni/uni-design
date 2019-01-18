@@ -15,7 +15,7 @@ export interface StepProps {
 
 export type DirectionType = 'horizontal' | 'vertical'
 
-export type SizeType = 'small' | 'normal' | 'large'
+export type SizeType = 'small' | 'normal'
 
 export type labelPlacement = 'horizontal' | 'vertical'
 

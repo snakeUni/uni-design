@@ -214,6 +214,19 @@ storiesOf('data show', module)
       title: '第伞部',
       describe: '这是第三部的描述'
     }]
+    options1 = [{
+      title: '第一步',
+      describe: '这是第一步的描述',
+      icon: <Icon type="alipay-circle-fill" />
+    }, {
+      title: '第二部',
+      describe: '这是第二部的描述',
+      icon: <Icon type="heart-fill" />
+    }, {
+      title: '第伞部',
+      describe: '这是第三部的描述',
+      icon: <Icon type="QQ" />
+    }]
 
     handleClick = () => {
       let current = this.state.current
@@ -227,8 +240,23 @@ storiesOf('data show', module)
     render() {
       return (
         <div>
+          <p>水平展示</p>
           <Step options={this.options} current={this.state.current}/>
-          <Button onClick={this.handleClick}>点击看class改变</Button>
+          <Step options={this.options} current={this.state.current} size="small"/>
+          <div style={{ marginTop: 20 }}>
+            <Step options={this.options} current={this.state.current} labelPlacement="vertical"/>
+            <Step options={this.options} current={this.state.current} labelPlacement="vertical" size="small"/>
+          </div>
+          <p>竖直展示</p>
+          <div style={{ marginTop: 20 }}>
+            <Step options={this.options} current={this.state.current} direction="vertical" />
+            <Step options={this.options} current={this.state.current} direction="vertical" size="small"/>
+          </div>
+          <p>自定义的图标</p>
+          <Step options={this.options1} current={this.state.current}/>
+          <div style={{ marginTop: 20 }}>
+            <Button onClick={this.handleClick}>点击看class改变</Button>
+          </div>
         </div>
       )
     }
