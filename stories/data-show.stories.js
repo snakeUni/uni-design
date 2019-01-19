@@ -5,6 +5,7 @@ import Button from '../src/components/button'
 import { Row, Col } from '../src/components/grid'
 import Avatar from '../src/components/avatar'
 import Step from '../src/components/step'
+import Tabs from '../src/components/tabs'
 
 const types = ['check-circle', 'close-circle', 'left-circle', 'down-circle', 'minus-circle', 'plus-circle', 'right-circle', 
 'time-circle', 'up-circle', 'warning-circle', 'sync', 'undo', 'redo', 'reload', 'message', 'setting', 'adduser', 'heart', 'error', 'star',
@@ -265,5 +266,61 @@ storiesOf('data show', module)
     <div>
       <StepDemo />
     </div>
+  )
+})
+.add('Tabs', () => {
+  class TabsDemo extends React.Component {
+    state = {
+      activeKey: 'a',
+      tabPosition: 'top'
+    }
+    position = ['top', 'right', 'bottom', 'left']
+    handleChange = key => {
+      this.setState({ activeKey: key })
+    }
+    handleClick = () => {
+      let index = this.position.indexOf(this.state.tabPosition)
+      if (index === 3) {
+        index = 0
+      } else {
+        index = index + 1
+      }
+      this.setState({ tabPosition: this.position[index] })
+    }
+    options = [
+      {
+        key: 'a',
+        tab: '标题等会',
+        content: '哈哈哈哈啊哈哈AAAAAAAAAA'
+      },
+      {
+        key: 'b',
+        tab: '标题件大事',
+        content: '哈哈哈哈啊哈哈BBBBBBBB'
+      },
+      {
+        key: 'c',
+        tab: '标题都是你吗',
+        content: '哈哈哈哈啊哈哈CCCCCCCCC'
+      }
+    ]
+    render() {
+      return (
+        <div>
+          <p>不带额外标题</p>
+          <Tabs activeKey={this.state.activeKey} onChange={this.handleChange} options={this.options}/>
+          <p>带额外标题</p>
+          <Tabs activeKey={this.state.activeKey} onChange={this.handleChange} options={this.options} tabBarExtraContent={<span>额外</span>} onExtraClick={() => alert('1232')}/>
+          <p>卡片</p>
+          <Tabs activeKey={this.state.activeKey} onChange={this.handleChange} options={this.options} type='card'/>
+          <p>多重位置选择</p>
+          <Tabs activeKey={this.state.activeKey} onChange={this.handleChange} options={this.options} tabPosition={this.state.tabPosition}/>
+          <Button onClick={this.handleClick}>{this.state.tabPosition}</Button>
+        </div>
+      )
+    }
+  }
+  return (
+    <TabsDemo />
   )
 })
