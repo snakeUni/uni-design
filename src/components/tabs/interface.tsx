@@ -3,10 +3,12 @@ import * as React from 'react'
  * tab
  */
 export interface TabProps {
-  // 每一个key 对应 activeKey
-  key?: string
-  // tab的内容
+  // 每一个key 对应 activeKey,key必传
+  key: string
+  // tab的内容 标题
   tab?: string | React.ReactNode
+  // tab对应的内容
+  content?: React.ReactNode | string
 }
 
 export type TabsTypes = 'card' | 'line'
@@ -25,8 +27,6 @@ export interface TabsProps {
   type: TabsTypes
   // onChange 切换tab的回调
   onChange: (value: string) => void
-  // defaultActiveKey 初始化选中面板的 key，如果没有设置 activeKey
-  defaultActiveKey?: string
   // size 大小 默认为normal
   size: TabsSizeTypes
   // tab bar 上额外的元素 可以显示在最右边
@@ -37,4 +37,10 @@ export interface TabsProps {
   className?: string
   // tabPosition 标签位置 默认为top
   tabPosition: TabsPositionTypes
+  // 前缀
+  prefixCls: string
+  // options 将要渲染的源数据
+  options: Array<TabProps>
+  // onExtraClick
+  onExtraClick: (e: React.MouseEvent<HTMLElement>) => void
 }
