@@ -6,6 +6,7 @@ import { Row, Col } from '../src/components/grid'
 import Avatar from '../src/components/avatar'
 import Step from '../src/components/step'
 import Tabs from '../src/components/tabs'
+import Spin from '../src/components/spin'
 
 const types = ['check-circle', 'close-circle', 'left-circle', 'down-circle', 'minus-circle', 'plus-circle', 'right-circle', 
 'time-circle', 'up-circle', 'warning-circle', 'sync', 'undo', 'redo', 'reload', 'message', 'setting', 'adduser', 'heart', 'error', 'star',
@@ -13,7 +14,7 @@ const types = ['check-circle', 'close-circle', 'left-circle', 'down-circle', 'mi
 'check-circle-fill', 'left-circle-fill', 'down-circle-fill', 'minus-circle-fill', 'close-circle-fill', 'info-circle-fill', 'up-circle-fill', 'right-circle-fill',
 'plus-circle-fill', 'question-circle-fill', 'warning-circle-fill', 'heart-fill', 'message-fill', 'check-square-fill', 'down-square-fill', 'minus-square-fill', 'close-square-fill',
 'left-square-fill', 'up-square-fill', 'right-square-fill', 'plus-square-fill', 'camera-fill', 'apple', 'android', 'apple-fill', 'QQ', 'chrome-fill', 'alipay-circle-fill',
-'zoomout', 'zoomin', 'caret-down', 'caret-up', 'caret-right', 'caret-left', 'search', 'eye-fill', 'eye', 'eye-close', 'delete'
+'zoomout', 'zoomin', 'caret-down', 'caret-up', 'caret-right', 'caret-left', 'search', 'eye-fill', 'eye', 'eye-close', 'delete', 'spin'
 ]
 
 storiesOf('data show', module)
@@ -322,5 +323,35 @@ storiesOf('data show', module)
   }
   return (
     <TabsDemo />
+  )
+})
+.add('Spin', () => {
+  return (
+    <div>
+      <p>默认大小</p>
+      <Spin />
+      <p>样式大小</p>
+      <Spin size="small"/>
+      <Spin />
+      <p>不同颜色</p>
+      <Spin color="red"/>
+      <Spin color="orange"/>
+      <Spin color="yellow"/>
+      <Spin color="blue"/>
+      <Spin color="green"/>
+      <Spin color="purple"/>
+      <p>带有tip</p>
+      <Spin tip="loading"/>
+      <p>带有children</p>
+      <div>
+        <Spin tip="loading">
+          <div style={{ width: 200 }}>
+            打算块解开打卡的金卡和 好的就看很简单啊数据库 和的金卡是好的就看好的看就撒好的就看啊
+            打算块解开打卡的金卡和 好的就看很简单啊数据库 和的金卡是好的就看好的看就撒好的就看啊
+            打算块解开打卡的金卡和 好的就看很简单啊数据库 和的金卡是好的就看好的看就撒好的就看啊
+          </div>
+        </Spin>
+      </div>
+    </div>
   )
 })
