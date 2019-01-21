@@ -7,6 +7,7 @@ import Avatar from '../src/components/avatar'
 import Step from '../src/components/step'
 import Tabs from '../src/components/tabs'
 import Spin from '../src/components/spin'
+import Progress from '../src/components/progress'
 
 const types = ['check-circle', 'close-circle', 'left-circle', 'down-circle', 'minus-circle', 'plus-circle', 'right-circle', 
 'time-circle', 'up-circle', 'warning-circle', 'sync', 'undo', 'redo', 'reload', 'message', 'setting', 'adduser', 'heart', 'error', 'star',
@@ -353,5 +354,58 @@ storiesOf('data show', module)
         </Spin>
       </div>
     </div>
+  )
+})
+.add('Progress', () => {
+  class ProgressDemo extends React.Component {
+    state = {
+      percent: 0
+    }
+    handleClick = () => {
+      let percent = this.state.percent
+      if (percent >= 100) {
+        percent = 0
+      } else {
+        percent += 10
+      }
+      this.setState({ percent })
+    }
+    render() {
+      return (
+        <div>
+          <p>各种颜色</p>
+          <Progress activeColor="blue" percent={this.state.percent}/>
+          <Progress activeColor="orange" percent={this.state.percent}/>
+          <Progress activeColor="yellow" percent={this.state.percent}/>
+          <Progress activeColor="green" percent={this.state.percent}/>
+          <Progress activeColor="purple" percent={this.state.percent}/>
+          <Progress percent={this.state.percent}/>
+          <p>不同尺寸</p>
+          <h5>小尺寸</h5>
+          <Progress percent={this.state.percent} size="small"/>
+          <h5>大尺寸</h5>
+          <Progress percent={this.state.percent} size="large"/>
+          <p>圆形</p>
+          <Progress percent={this.state.percent} type="circle" />
+          <Progress percent={this.state.percent} type="circle" activeColor="blue" />
+          <Progress percent={this.state.percent} type="circle" activeColor="orange" />
+          <Progress percent={this.state.percent} type="circle" activeColor="yellow" />
+          <Progress percent={this.state.percent} type="circle" activeColor="green" />
+          <Progress percent={this.state.percent} type="circle" activeColor="purple" />
+          <p>自定义文本</p>
+          <Progress percent={this.state.percent} type="circle" textRender={percent => {
+            if (percent === 100) return '成功'
+            return 'loading'
+          }}/>
+          <p>不同尺寸</p>
+          <Progress percent={this.state.percent} type="circle" size="small"/>
+          <Progress percent={this.state.percent} type="circle" size="large"/>
+          <Button onClick={this.handleClick}>点击我</Button>
+        </div>
+      )
+    }
+  }
+  return (
+    <ProgressDemo />
   )
 })
