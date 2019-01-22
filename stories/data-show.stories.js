@@ -8,6 +8,9 @@ import Step from '../src/components/step'
 import Tabs from '../src/components/tabs'
 import Spin from '../src/components/spin'
 import Progress from '../src/components/progress'
+import Tag from '../src/components/tag'
+
+const TagChecked = Tag.TagChecked
 
 const types = ['check-circle', 'close-circle', 'left-circle', 'down-circle', 'minus-circle', 'plus-circle', 'right-circle', 
 'time-circle', 'up-circle', 'warning-circle', 'sync', 'undo', 'redo', 'reload', 'message', 'setting', 'adduser', 'heart', 'error', 'star',
@@ -407,5 +410,61 @@ storiesOf('data show', module)
   }
   return (
     <ProgressDemo />
+  )
+})
+.add('Tag', () => {
+  class TagDemo extends React.Component {
+    state = {
+      checked: false
+    }
+    handleChange = checked => {
+      this.setState({ checked })
+    }
+    render() {
+      return (
+        <div>
+          <p>尺寸</p>
+          <Tag>默认</Tag>
+          <Tag size="small" style={{ marginLeft: 10 }}>默认</Tag>
+          <Tag size="large" style={{ marginLeft: 10 }}>默认</Tag>
+          <p>关闭</p>
+          <Tag closable onClose={() => console.log('close')}>
+            显示关闭按钮
+          </Tag>
+          <p>自定义颜色</p>
+          <Tag color="blue">默认</Tag>
+          <Tag color="red" style={{ marginLeft: 10 }}>默认</Tag>
+          <Tag color="orange" style={{ marginLeft: 10 }}>默认</Tag>
+          <Tag color="yellow" style={{ marginLeft: 10 }}>默认</Tag>
+          <Tag color="green" style={{ marginLeft: 10 }}>默认</Tag>
+          <Tag color="purple" style={{ marginLeft: 10 }}>默认</Tag>
+          <p>不同大小的颜色</p>
+          <Tag color="blue" size="small">默认</Tag>
+          <Tag color="red" style={{ marginLeft: 10 }} size="small">默认</Tag>
+          <Tag color="orange" style={{ marginLeft: 10 }} size="small">默认</Tag>
+          <Tag color="yellow" style={{ marginLeft: 10 }} size="small">默认</Tag>
+          <Tag color="green" style={{ marginLeft: 10 }} size="small">默认</Tag>
+          <Tag color="purple" style={{ marginLeft: 10 }} size="small">默认</Tag>
+          <Tag color="blue" size="large" style={{ marginLeft: 10 }}>默认</Tag>
+          <Tag color="red" style={{ marginLeft: 10 }} size="large">默认</Tag>
+          <Tag color="orange" style={{ marginLeft: 10 }} size="large">默认</Tag>
+          <Tag color="yellow" style={{ marginLeft: 10 }} size="large">默认</Tag>
+          <Tag color="green" style={{ marginLeft: 10 }} size="large">默认</Tag>
+          <Tag color="purple" style={{ marginLeft: 10 }} size="large">默认</Tag>
+          <Tag color="purple" style={{ marginLeft: 10 }} size="large" closable>默认</Tag>
+          <p>checked 标签</p>
+          <TagChecked checked={this.state.checked} onChange={this.handleChange}>默认选中</TagChecked>
+          <br/>
+          <Tag.TagChecked checked={this.state.checked} type="ticked" onChange={this.handleChange}>默认选中</Tag.TagChecked>
+          <p>disabled</p>
+          <TagChecked checked={this.state.checked} onChange={this.handleChange} disabled>默认选中</TagChecked>
+        </div>
+      )
+    }
+  }
+  return (
+    <div>
+      <TagDemo />
+    </div>
   )
 })
