@@ -9,6 +9,7 @@ import Tabs from '../src/components/tabs'
 import Spin from '../src/components/spin'
 import Progress from '../src/components/progress'
 import Tag from '../src/components/tag'
+import Affix from '../src/components/affix'
 
 const TagChecked = Tag.TagChecked
 
@@ -465,6 +466,21 @@ storiesOf('data show', module)
   return (
     <div>
       <TagDemo />
+    </div>
+  )
+})
+.add('Affix', () => {
+  return (
+    <div>
+      <div style={{ height:200, background: 'skyblue' }}>内容</div>
+      <Affix offsetTop={50} useFix onChange={affixed => console.log("触发：",affixed)}>
+        <Button>固钉不支持sticky</Button>
+      </Affix>
+      <div style={{ height:500, background: 'skyblue' }}>内容</div>
+      <Affix offsetTop={200} >
+        <Button>固钉支持sticky</Button>
+      </Affix>
+      <div style={{ height:1200, background: 'skyblue' }}>内容</div>
     </div>
   )
 })

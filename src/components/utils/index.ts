@@ -5,7 +5,13 @@ const omit = (obj: any, arr: string[]) =>
 
 const compose = (...fns: any) => fns.reduce((f: any, g: any) => (...args: any) => f(g(...args)));
 
+const getPrefixCls = (prefixCls: string, classStr: string) => {
+  if (!classStr) return prefixCls
+  return `${prefixCls}-${classStr}`
+}
+
 export {
   omit,
-  compose
+  compose,
+  getPrefixCls
 }
