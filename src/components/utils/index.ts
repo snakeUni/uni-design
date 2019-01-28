@@ -1,3 +1,5 @@
+import { getUid, getUidString } from './guid'
+
 const omit = (obj: any, arr: string[]) =>
   Object.keys(obj)
     .filter(k => !arr.includes(k))
@@ -13,5 +15,7 @@ const getPrefixCls = (prefixCls: string, classStr: string) => {
 export {
   omit,
   compose,
-  getPrefixCls
+  getPrefixCls,
+  getUid,
+  getUidString
 }

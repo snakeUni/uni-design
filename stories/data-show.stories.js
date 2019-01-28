@@ -10,6 +10,7 @@ import Spin from '../src/components/spin'
 import Progress from '../src/components/progress'
 import Tag from '../src/components/tag'
 import Affix from '../src/components/affix'
+import { AddMesssage } from '../src/components/message'
 
 const TagChecked = Tag.TagChecked
 
@@ -482,5 +483,22 @@ storiesOf('data show', module)
       </Affix>
       <div style={{ height:1200, background: 'skyblue' }}>内容</div>
     </div>
+  )
+})
+.add('Message', () => {
+  class MessageDemo extends Component {
+    handleClick = () => {
+      // AddMesssage({ content:'这是内容' })
+    }
+    render() {
+      return (
+        <div>
+          <Button onClick={this.handleClick}>点击我</Button>
+        </div>
+      )
+    }
+  }
+  return (
+    <MessageDemo />
   )
 })
