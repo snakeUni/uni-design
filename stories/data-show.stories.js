@@ -10,7 +10,8 @@ import Spin from '../src/components/spin'
 import Progress from '../src/components/progress'
 import Tag from '../src/components/tag'
 import Affix from '../src/components/affix'
-import { AddMesssage } from '../src/components/message'
+// import { AddMesssage } from '../src/components/message'
+import Collapse from '../src/components/collapse'
 
 const TagChecked = Tag.TagChecked
 
@@ -500,5 +501,75 @@ storiesOf('data show', module)
   }
   return (
     <MessageDemo />
+  )
+})
+.add('Collapse', () => {
+  let dataSource = [], 
+  dataSource2 = []
+  for(let i = 0; i < 5; i++) {
+    dataSource.push({
+      key: `${i + 10}`,
+      title: `标题-${i}`,
+      content: `内容-${i}`
+    })
+    if (i === 3) {
+      dataSource2.push({
+        key: `${i + 10}`,
+        title: `标题-${i}`,
+        content: `内容-${i}`,
+        disabled: true
+      })
+    } else {
+      dataSource2.push({
+        key: `${i + 10}`,
+        title: `标题-${i}`,
+        content: `内容-${i}`
+      })
+    }
+  }
+  class CollapseDemo extends Component {
+
+    state = {
+      dataSource: dataSource,
+      dataSource2: dataSource2,
+      activeKey: [],
+      activeKey1: [],
+      activeKey2: []
+    }
+
+    handleChange = activeKey => {
+      this.setState({ activeKey })
+    }
+    handleChange1 = activeKey1 => {
+      this.setState({ activeKey1 })
+    }
+    handleChange2 = activeKey2 => {
+      this.setState({ activeKey2 })
+    }
+    
+    render() {
+      console.log('activeKey1', this.state.activeKey1)
+      return (
+        <div>
+          <p>正常模式</p>
+          <Collapse dataSource={this.state.dataSource} onChange={this.handleChange} activeKey={this.state.activeKey}/>
+          <div>
+            <p>手风琴模式</p>
+            <Collapse dataSource={this.state.dataSource} onChange={this.handleChange1} activeKey={this.state.activeKey1} accordion/>
+          </div>
+          <div>
+            <p>不可用</p>
+            <Collapse dataSource={this.state.dataSource2} onChange={this.handleChange2} activeKey={this.state.activeKey2} />
+          </div>
+          <p>无边框</p>
+          <Collapse dataSource={this.state.dataSource} onChange={this.handleChange} activeKey={this.state.activeKey} border={false}/>
+        </div>
+      )
+    }
+  }
+  return (
+    <div>
+      <CollapseDemo />
+    </div>
   )
 })
