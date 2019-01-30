@@ -13,6 +13,7 @@ import Affix from '../src/components/affix'
 // import { AddMesssage } from '../src/components/message'
 import Collapse from '../src/components/collapse'
 import Card from '../src/components/card'
+import Badge from '../src/components/badge'
 
 const TagChecked = Tag.TagChecked
 
@@ -604,6 +605,88 @@ storiesOf('data show', module)
             </div>
           </div>
         </Card>
+      </div>
+    </div>
+  )
+})
+.add('Badge', () => {
+  return (
+    <div>
+      <br/>
+      <p>正常徽标</p>
+      <div style={{ display: 'inline-block', marginLeft: 20 }}>
+        <Badge count={5}>
+          <a style={{ width: 40, height: 40, background: '#ccc', display: 'block', borderRadius: 4 }}></a>
+        </Badge>
+      </div>
+      <div style={{ display: 'inline-block', marginLeft: 20 }}>
+        <Badge count={10}>
+          <a style={{ width: 40, height: 40, background: '#ccc', display: 'block', borderRadius: 4 }}></a>
+        </Badge>
+      </div>
+      <div style={{ display: 'inline-block', marginLeft: 20 }}>
+        <Badge count={99}>
+          <a style={{ width: 40, height: 40, background: '#ccc', display: 'block', borderRadius: 4 }}></a>
+        </Badge>
+      </div>
+      <div style={{ display: 'inline-block', marginLeft: 20 }}>
+        <Badge count={200}>
+          <a style={{ width: 40, height: 40, background: '#ccc', display: 'block', borderRadius: 4 }}></a>
+        </Badge>
+      </div>
+      <div style={{ display: 'inline-block', marginLeft: 20 }}>
+        <Badge count={200} overflowCount={999}>
+          <a style={{ width: 40, height: 40, background: '#ccc', display: 'block', borderRadius: 4 }}></a>
+        </Badge>
+      </div>
+      <div style={{ display: 'inline-block', marginLeft: 20 }}>
+        <Badge count={2000} overflowCount={999}>
+          <a style={{ width: 40, height: 40, background: '#ccc', display: 'block', borderRadius: 4 }}></a>
+        </Badge>
+      </div>
+      <p>只有红点的情况</p>
+      <div style={{ display: 'inline-block', marginLeft: 20 }}>
+        <Badge dot>
+          <a style={{ width: 40, height: 40, background: '#ccc', display: 'block', borderRadius: 4 }}></a>
+        </Badge>
+      </div>
+      <div style={{ display: 'inline-block', marginLeft: 20 }}>
+        <Badge dot status="success">
+          <a style={{ width: 40, height: 40, background: '#ccc', display: 'block', borderRadius: 4 }}></a>
+        </Badge>
+      </div>
+      <div style={{ display: 'inline-block', marginLeft: 20 }}>
+        <Badge dot status="error">
+          <a style={{ width: 40, height: 40, background: '#ccc', display: 'block', borderRadius: 4 }}></a>
+        </Badge>
+      </div>
+      <div style={{ display: 'inline-block', marginLeft: 20 }}>
+        <Badge dot status="warning">
+          <a style={{ width: 40, height: 40, background: '#ccc', display: 'block', borderRadius: 4 }}></a>
+        </Badge>
+      </div>
+      <div style={{ display: 'inline-block', marginLeft: 20 }}>
+        <Badge dot status="process">
+          <a style={{ width: 40, height: 40, background: '#ccc', display: 'block', borderRadius: 4 }}></a>
+        </Badge>
+      </div>
+      <div style={{ display: 'inline-block', marginLeft: 20 }}>
+        <Badge dot status="default">
+          <a style={{ width: 40, height: 40, background: '#ccc', display: 'block', borderRadius: 4 }}></a>
+        </Badge>
+      </div>
+      <p>不包裹任何子元素</p>
+      <div style={{ display: 'inline-block', marginLeft: 20 }}>
+        <Badge count={10} />
+      </div>
+      <div style={{ display: 'inline-block', marginLeft: 20 }}>
+        <Badge count={5} />
+      </div>
+      <p>自定义</p>
+      <div style={{ display: 'inline-block', marginLeft: 20 }}>
+        <Badge count="hot">
+          <a style={{ width: 40, height: 40, background: '#ccc', display: 'block', borderRadius: 4 }}></a>
+        </Badge>
       </div>
     </div>
   )
