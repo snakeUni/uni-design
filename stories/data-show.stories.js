@@ -12,6 +12,7 @@ import Tag from '../src/components/tag'
 import Affix from '../src/components/affix'
 // import { AddMesssage } from '../src/components/message'
 import Collapse from '../src/components/collapse'
+import Card from '../src/components/card'
 
 const TagChecked = Tag.TagChecked
 
@@ -570,6 +571,40 @@ storiesOf('data show', module)
   return (
     <div>
       <CollapseDemo />
+    </div>
+  )
+})
+.add('Card', () => {
+  const actions = [{
+    content: <Icon type="apple" />,
+    onClick: () => console.log('111')
+  }, {
+    content: <Icon type="chrome-fill" />,
+    onClick: () => console.log('222')
+  }]
+  return (
+    <div>
+      <div>
+        <Card title="这是标题" extra={<Icon type="QQ" />} style={{ width: 300 }}>
+          这是内容这是内容这是内容这是内容这是内容
+        </Card>
+      </div>
+      <div>
+        <Card title="这是标题" extra={<Icon type="QQ" />} actions={actions} style={{ width: 300, marginTop: 20 }} >
+          这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容
+        </Card>
+      </div>
+      <div>
+        <Card style={{ width: 300, marginTop: 20 }}>
+          <div>
+            <img src="https://img.alicdn.com/tfs/TB1FNIOSFXXXXaWXXXXXXXXXXXX-260-188.png" />
+            <div style={{ padding: 20, textAlign: 'center' }}>
+              <div>Father's Day</div>
+              <div>Thank you, papa</div>
+            </div>
+          </div>
+        </Card>
+      </div>
     </div>
   )
 })
