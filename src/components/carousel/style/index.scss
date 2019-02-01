@@ -1,0 +1,48 @@
+$carousel: 'uni-carousel';
+
+.#{$carousel} {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -ms-touch-action: pan-y;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+
+  &-slide {
+    &-list {
+      position: relative;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+
+    &-track {
+      white-space: nowrap;
+      position: relative;
+      display: block;
+      transform: translateZ(0);
+      transition: -webkit-transform 500ms ease 0s;
+    }
+
+    &-item {
+      display: inline-block;
+      width: 100%;
+      position: relative;
+      cursor: pointer;
+    }
+  }
+
+  &-dots {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    position: absolute;
+    left: 50%;
+    top: 80%;
+    transform: translateX(-50%);
+  }
+}

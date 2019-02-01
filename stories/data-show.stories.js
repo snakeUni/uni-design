@@ -14,6 +14,7 @@ import Affix from '../src/components/affix'
 import Collapse from '../src/components/collapse'
 import Card from '../src/components/card'
 import Badge from '../src/components/badge'
+import Carousel from '../src/components/carousel'
 
 const TagChecked = Tag.TagChecked
 
@@ -688,6 +689,18 @@ storiesOf('data show', module)
           <a style={{ width: 40, height: 40, background: '#ccc', display: 'block', borderRadius: 4 }}></a>
         </Badge>
       </div>
+    </div>
+  )
+})
+.add('Carousel', () => {
+  return (
+    <div style={{ width: 400}}>
+      <Carousel autoPlay>
+        <div style={{width: 400, height: 150, textAlign: 'center', background: 'skyblue'}}>1</div>
+        <div style={{width: 400, height: 150, textAlign: 'center', background: 'skyblue'}}>2</div>
+        <div style={{width: 400, height: 150, textAlign: 'center', background: 'skyblue'}}>3</div>
+        <div style={{width: 400, height: 150, textAlign: 'center', background: 'skyblue'}}>4</div>
+      </Carousel>
     </div>
   )
 })
