@@ -27,4 +27,6 @@ export interface CarouselProps {
   children?: React.ReactNode
   // centerMode 是否开启居中模式突出中间的 默认为false
   centerMode: boolean
+  // current 初始化的时候显示第几个默认为0
+  activeIndex: number
 }

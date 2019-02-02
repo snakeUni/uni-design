@@ -25,7 +25,6 @@ $carousel: 'uni-carousel';
       position: relative;
       display: block;
       transform: translateZ(0);
-      transition: -webkit-transform 500ms ease 0s;
     }
 
     &-item {
@@ -44,5 +43,9 @@ $carousel: 'uni-carousel';
     left: 50%;
     top: 80%;
     transform: translateX(-50%);
+  }
+
+  li {
+    list-style: none;
   }
 }
