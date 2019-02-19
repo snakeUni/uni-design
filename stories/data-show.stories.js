@@ -14,6 +14,7 @@ import Affix from '../src/components/affix'
 import Collapse from '../src/components/collapse'
 import Card from '../src/components/card'
 import Badge from '../src/components/badge'
+import Overlay from '../src/components/overlay'
 
 const TagChecked = Tag.TagChecked
 
@@ -688,6 +689,37 @@ storiesOf('data show', module)
           <a style={{ width: 40, height: 40, background: '#ccc', display: 'block', borderRadius: 4 }}></a>
         </Badge>
       </div>
+    </div>
+  )
+})
+.add('Overlay', () => {
+  class OverlayDemo extends Component {
+    state = {
+      visible: false
+    }
+
+    handleClick = () => {
+      this.setState({ visible: !this.state.visible })
+    }
+
+    handleClose = () => {
+      this.setState({ visible: false  })
+    }
+
+    render() {
+      return (
+        <div>
+          <Button onClick={this.handleClick}>点击出弹层</Button>
+          <Overlay onClose={this.handleClose} visible={this.state.visible} destroy={false}>
+            这是内容区域
+          </Overlay>
+        </div>
+      )
+    }
+  }
+  return (
+    <div>
+      <OverlayDemo />
     </div>
   )
 })

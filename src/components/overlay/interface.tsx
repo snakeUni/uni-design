@@ -7,8 +7,10 @@ export interface OverlayProps {
   className?: string
   // 弹出层名字
   maskClassName?: string
-  // animationName 区域动画名称
-  animationName?: string
+  // animationName 区域动画 默认为fade
+  animationName: string
+  // 弹出层动画类名 默认为fade
+  maskAnimationName: string
   // visible 是否可见 默认为false
   visible: boolean
   // header 是否显示头部
@@ -33,6 +35,8 @@ export interface OverlayProps {
   destroy: boolean
   // style 样式
   style?: React.CSSProperties
+  // zIndex 层级 默认999
+  zIndex?: number
 }
 
 export type Trigger = 'click' | 'hover'
