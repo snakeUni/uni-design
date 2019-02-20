@@ -19,6 +19,10 @@ const defaultProps: OverlayProps = {
   animationName: 'fade'
 }
 
+const setBodyStyle = (visible: boolean) => {
+  document.body.style.overflow = visible ? 'hidden' : null
+}
+
 const OverlayWrapper: React.SFC<OverlayProps> & { defaultProps: Partial<OverlayProps> } = props => {
   const [firstTime, setFirstTime] = useState(true)
   const { visible, destroy } = props
@@ -30,25 +34,12 @@ const OverlayWrapper: React.SFC<OverlayProps> & { defaultProps: Partial<OverlayP
 
   if (destroy) {
     if (visible) {
-      return createPortal(
-        <div>
-          <Overlay {...props} />
-        </div>,
-        document.body
-      )
+      return createPortal(<Overlay {...props} />, document.body)
     }
     return null
   } else {
-    let style: React.CSSProperties = {}
-    style = visible ? {} : { display: 'none' }
-    return visible || !firstTime
-      ? createPortal(
-          <div style={style}>
-            <Overlay {...props} />
-          </div>,
-          document.body
-        )
-      : null
+    setBodyStyle(visible)
+    return visible || !firstTime ? createPortal(<Overlay {...props} />, document.body) : null
   }
 }
 

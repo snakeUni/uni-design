@@ -5,7 +5,7 @@ import { OverlayProps } from './interface'
 import Icon from '../icon'
 
 const noop = () => {}
-const { useEffect } = React
+const { useEffect, useRef } = React
 
 const defaultProps: OverlayProps = {
   prefixCls: 'uni-overlay',
@@ -41,6 +41,18 @@ const maskClick = (e: React.MouseEvent<HTMLDivElement>, props: OverlayProps) => 
   }
 }
 
+const animateEnter = ({ destroy }: OverlayProps, wrapRef: React.RefObject<HTMLDivElement>) => {
+  if (!destroy) {
+    ;(wrapRef.current as any).style.display = ''
+  }
+}
+
+const animateLeave = ({ destroy }: OverlayProps, wrapRef: React.RefObject<HTMLDivElement>) => {
+  if (!destroy) {
+    ;(wrapRef.current as any).style.display = 'none'
+  }
+}
+
 const renderMask = ({
   maskClassName,
   mask,
@@ -54,7 +66,7 @@ const renderMask = ({
   const style: React.CSSProperties = zindex ? { zIndex: zindex } : {}
   if (mask) {
     return (
-      <CSSTransition in={visible} timeout={2000} classNames={`${prefixCls}-${maskAnimationName}`}>
+      <CSSTransition in={visible} timeout={300} classNames={`${prefixCls}-${maskAnimationName}`}>
         <div className={classStr} style={style} />
       </CSSTransition>
     )
@@ -69,9 +81,13 @@ const renderHeader = ({ header, prefixCls }: OverlayProps) => {
   return null
 }
 
-const renderClose = ({ closable, onClose }: OverlayProps) => {
+const renderClose = ({ closable, onClose, close, prefixCls }: OverlayProps) => {
   if (closable) {
-    return <Icon type="close" onClick={() => handleClose(onClose)} />
+    return (
+      <div className={`${prefixCls}-close`} onClick={() => handleClose(onClose)}>
+        {close || <Icon type="close" />}
+      </div>
+    )
   }
   return null
 }
@@ -83,12 +99,18 @@ const renderFooter = ({ footer, prefixCls }: OverlayProps) => {
   return null
 }
 
-const renderBody = (props: OverlayProps) => {
+const renderBody = (props: OverlayProps, wrapRef: React.RefObject<HTMLDivElement>) => {
   const { prefixCls, children, animationName, zIndex, visible } = props
   const zindex = getZIndex(zIndex)
   const style: React.CSSProperties = zIndex ? { zIndex: zindex } : {}
   return (
-    <CSSTransition in={visible} timeout={2000} classNames={`${prefixCls}-${animationName}`}>
+    <CSSTransition
+      in={visible}
+      timeout={300}
+      classNames={`${prefixCls}-${animationName}`}
+      onEnter={() => animateEnter(props, wrapRef)}
+      onExited={() => animateLeave(props, wrapRef)}
+    >
       <div className={`${prefixCls}-container`} style={style}>
         {renderHeader(props)}
         {renderClose(props)}
@@ -102,6 +124,7 @@ const renderBody = (props: OverlayProps) => {
 const Overlay: React.FC<OverlayProps> & { defaultProps: Partial<OverlayProps> } = props => {
   const { prefixCls, maskClosable } = props
   const classStr = getClassNames(props)
+  const wrapRef = useRef(null)
   useEffect(() => {
     document.body.style.overflow = 'hidden'
     return () => {
@@ -109,7 +132,7 @@ const Overlay: React.FC<OverlayProps> & { defaultProps: Partial<OverlayProps> } 
     }
   }, [])
   return (
-    <div className={classStr}>
+    <div className={classStr} ref={wrapRef}>
       {renderMask(props)}
       <div
         className={`${prefixCls}-wrap`}
@@ -121,7 +144,7 @@ const Overlay: React.FC<OverlayProps> & { defaultProps: Partial<OverlayProps> } 
             : undefined
         }
       >
-        {renderBody(props)}
+        {renderBody(props, wrapRef)}
       </div>
     </div>
   )

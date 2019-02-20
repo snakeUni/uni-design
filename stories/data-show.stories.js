@@ -14,7 +14,7 @@ import Affix from '../src/components/affix'
 import Collapse from '../src/components/collapse'
 import Card from '../src/components/card'
 import Badge from '../src/components/badge'
-import Overlay from '../src/components/overlay'
+import Modal from '../src/components/modal'
 
 const TagChecked = Tag.TagChecked
 
@@ -692,27 +692,31 @@ storiesOf('data show', module)
     </div>
   )
 })
-.add('Overlay', () => {
+.add('Modal', () => {
   class OverlayDemo extends Component {
     state = {
       visible: false
     }
 
     handleClick = () => {
-      this.setState({ visible: !this.state.visible })
+      this.setState({ visible: true })
     }
 
     handleClose = () => {
       this.setState({ visible: false  })
     }
 
+    handleOk = () => {
+      this.setState({ visible: false })
+    }
+
     render() {
       return (
         <div>
           <Button onClick={this.handleClick}>点击出弹层</Button>
-          <Overlay onClose={this.handleClose} visible={this.state.visible} destroy={false}>
+          <Modal onCancel={this.handleClose} visible={this.state.visible} title="标题测试" onOk={this.handleOk} destroy={false}>
             这是内容区域
-          </Overlay>
+          </Modal>
         </div>
       )
     }
