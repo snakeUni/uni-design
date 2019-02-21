@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { createPortal } from 'react-dom'
+import { CSSTransition } from 'react-transition-group'
 import { OverlayProps } from './interface'
 import Overlay from './overlay'
 
@@ -25,22 +26,43 @@ const setBodyStyle = (visible: boolean) => {
 
 const OverlayWrapper: React.SFC<OverlayProps> & { defaultProps: Partial<OverlayProps> } = props => {
   const [firstTime, setFirstTime] = useState(true)
-  const { visible, destroy } = props
+  const { visible, destroy, prefixCls } = props
+
   if (visible) {
     if (firstTime) {
       setFirstTime(false)
     }
   }
 
-  if (destroy) {
-    if (visible) {
-      return createPortal(<Overlay {...props} />, document.body)
+  // 处理destroy为false的时候第一次没动画的问题
+  const getUnmount = () => {
+    let props: any = {}
+    if (destroy) {
+      props.unmountOnExit = true
+    } else {
+      if (firstTime) {
+        props.unmountOnExit = true
+      } else {
+        props.unmountOnExit = false
+      }
     }
-    return null
-  } else {
-    setBodyStyle(visible)
-    return visible || !firstTime ? createPortal(<Overlay {...props} />, document.body) : null
+    return props
   }
+
+  if (!destroy) {
+    setBodyStyle(visible)
+  }
+  return createPortal(
+    <CSSTransition
+      in={props.visible}
+      timeout={300}
+      classNames={`${prefixCls}-fade`}
+      {...getUnmount()}
+    >
+      <Overlay {...props} />
+    </CSSTransition>,
+    document.body
+  )
 }
 
 OverlayWrapper.defaultProps = defaultProps
