@@ -14,6 +14,7 @@ import Affix from '../src/components/affix'
 import Collapse from '../src/components/collapse'
 import Card from '../src/components/card'
 import Badge from '../src/components/badge'
+import Modal from '../src/components/modal'
 
 const TagChecked = Tag.TagChecked
 
@@ -688,6 +689,60 @@ storiesOf('data show', module)
           <a style={{ width: 40, height: 40, background: '#ccc', display: 'block', borderRadius: 4 }}></a>
         </Badge>
       </div>
+    </div>
+  )
+})
+.add('Modal', () => {
+  class OverlayDemo extends Component {
+    state = {
+      visible: false,
+      visible1: false
+    }
+
+    handleClick = () => {
+      this.setState({ visible: true })
+    }
+
+    handleClick1 = () => {
+      this.setState({ visible1: true })
+    }
+
+    handleClose = () => {
+      this.setState({ visible: false  })
+    }
+
+    handleClose1 = () => {
+      this.setState({ visible1: false  })
+    }
+
+    handleOk = () => {
+      this.setState({ visible: false })
+    }
+
+    handleOk1 = () => {
+      this.setState({ visible1: false })
+    }
+
+    render() {
+      return (
+        <div>
+          <Button onClick={this.handleClick}>点击出弹层不销毁</Button>
+          <div style={{ marginTop: 20 }}>
+            <Button onClick={this.handleClick1}>点击出弹层销毁</Button>
+          </div>
+          <Modal onCancel={this.handleClose} visible={this.state.visible} title="标题测试" onOk={this.handleOk} destroy={false}>
+            这是内容区域
+          </Modal>
+          <Modal onCancel={this.handleClose1} visible={this.state.visible1} title="标题测试" onOk={this.handleOk1}>
+            这是内容区域
+          </Modal>
+        </div>
+      )
+    }
+  }
+  return (
+    <div>
+      <OverlayDemo />
     </div>
   )
 })

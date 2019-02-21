@@ -4,7 +4,8 @@
     "react-hooks"
   ],
   "rules": {
-    "react-hooks/rules-of-hooks": "error"
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/reactive-deps": 2
   },
   "parser": "babel-eslint"
 }

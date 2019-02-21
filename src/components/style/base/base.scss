@@ -96,6 +96,12 @@ $color-link-default: #5584FF;
 $color-link-visited: #5584FF;
 $color-link-hover: #3E71F7;
 
+/* z-index */
+$modalIndex: 999;
+
+/* opacity */
+$opacity-normal: 0.8;
+
 /* 动画 */
 $ease-in-quad: cubic-bezier(0.550, 0.085, 0.680, 0.530);
 $ease-in-cubic: cubic-bezier(0.550, 0.055, 0.675, 0.190);
