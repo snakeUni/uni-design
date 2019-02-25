@@ -1,4 +1,4 @@
-import  React, { Component } from "react";
+import  React, { Component, useState } from "react";
 import { storiesOf } from "@storybook/react";
 import Icon from '../src/components/icon'
 import Button from '../src/components/button'
@@ -15,6 +15,7 @@ import Collapse from '../src/components/collapse'
 import Card from '../src/components/card'
 import Badge from '../src/components/badge'
 import Modal from '../src/components/modal'
+import Pagination from '../src/components/pagination'
 
 const TagChecked = Tag.TagChecked
 
@@ -743,6 +744,39 @@ storiesOf('data show', module)
   return (
     <div>
       <OverlayDemo />
+    </div>
+  )
+})
+.add('Pagination', () => {
+  function PaginationDemo() {
+    const [current, setCurrent] = useState(5)
+
+    const handleChange = value => {
+      setCurrent(value)
+      console.log("value:", value)
+    }
+    return (
+      <div>
+        <div style={{ padding: 10, color: '#ccc' }}> >> 默认显示5页，一页10条</div>
+        <div><Pagination current={current} total={134} onChange={handleChange}/></div>
+        <div style={{ padding: 10, color: '#ccc' }}> >> 跳至某页</div>
+        <div><Pagination current={current} total={134} onChange={handleChange} showQuickJumper /></div>
+        <div style={{ padding: 10, color: '#ccc' }}> >> 一页5条</div>
+        <div><Pagination current={current} total={134} onChange={handleChange} pageSize={5} /></div>
+        <div style={{ padding: 10, color: '#ccc' }}> >> 显示出10页</div>
+        <div><Pagination current={current} total={134} onChange={handleChange} pageSize={5} pageShowCount={10}/></div>
+        <div style={{ padding: 10, color: '#ccc' }}> >> 小尺寸</div>
+        <div><Pagination current={current} total={134} onChange={handleChange} pageSize={5} pageShowCount={10} size='small'/></div>
+        <div style={{ padding: 10, color: '#ccc' }}> >> 大尺寸</div>
+        <div><Pagination current={current} total={134} onChange={handleChange} pageSize={5} pageShowCount={10} size='large'/></div>
+      </div>
+      
+    )
+  }
+
+  return (
+    <div>
+      <div><PaginationDemo /></div>
     </div>
   )
 })
