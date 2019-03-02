@@ -17,6 +17,7 @@ import Badge from '../src/components/badge'
 import Modal from '../src/components/modal'
 import Pagination from '../src/components/pagination'
 import Slide from '../src/components/slide'
+import Divider from '../src/components/divider'
 
 const TagChecked = Tag.TagChecked
 
@@ -791,4 +792,31 @@ storiesOf('data show', module)
     )
   }
   return <SlideDemo />
+})
+.add('Divider', () => {
+  return (
+    <div>
+      <div style={{ width: 500}}>
+        <div>水平分割线</div>
+        <div>尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区</div>
+        <Divider />
+        <div>尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区虚线</div>
+        <Divider dashed/>
+        <div>尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区虚线</div>
+        <Divider orientation='left'>left</Divider>
+        <div>尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区虚线</div>
+        <Divider>center</Divider>
+        <div>尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区尼日荣区虚线</div>
+        <Divider orientation='right'>right</Divider>
+      </div>
+      <div>
+        <div>竖直分割线</div>
+        <a>主页</a>
+        <Divider type='vertical' />
+        <a>组件</a>
+        <Divider type='vertical' />
+        <a>关于我们</a>
+      </div>
+    </div>
+  )
 })
