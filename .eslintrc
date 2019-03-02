@@ -5,7 +5,7 @@
   ],
   "rules": {
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/reactive-deps": 2
+    "react-hooks/exhaustive-deps": "warn"
   },
   "parser": "babel-eslint"
 }

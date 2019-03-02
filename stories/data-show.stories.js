@@ -16,6 +16,7 @@ import Card from '../src/components/card'
 import Badge from '../src/components/badge'
 import Modal from '../src/components/modal'
 import Pagination from '../src/components/pagination'
+import Slide from '../src/components/slide'
 
 const TagChecked = Tag.TagChecked
 
@@ -779,4 +780,15 @@ storiesOf('data show', module)
       <div><PaginationDemo /></div>
     </div>
   )
+})
+.add('Slide', () => {
+  function SlideDemo() {
+    const [value, setValue] = useState(0)
+    return (
+      <div style={{ marginTop: 20 }}>
+        <Slide value={value} onChange={value => {console.log('value:', value); setValue(value)}}/>
+      </div>
+    )
+  }
+  return <SlideDemo />
 })
