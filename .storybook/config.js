@@ -2,6 +2,7 @@ import React from "react"
 import { configure, addDecorator } from '@storybook/react'
 import { withInfo } from '@storybook/addon-info';
 import { withOptions } from '@storybook/addon-options';
+import { themes } from '@storybook/components';
 import 'babel-polyfill'
 import '../stories/index.scss'
 
@@ -19,6 +20,13 @@ addDecorator(withInfo({
   maxPropArrayLength: 100,
   maxPropStringLength: 100,
 }))
+
+addDecorator(
+  withOptions({
+    name: '✌️ uni-design',
+    theme: themes.dark,
+  })
+);
 
 addDecorator(withOptions({
   /**
