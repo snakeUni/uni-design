@@ -1,0 +1,44 @@
+import * as React from 'react'
+
+export type ModeEnum = 'vertical' | 'horizontal' | 'inline'
+
+export type ThemeEnum = 'light' | 'dark'
+
+export interface MenuProps {
+  // mode 菜单的类型支持垂直， 水平， 内嵌
+  mode: ModeEnum
+  // selectedKeys 选中的keys
+  selectedKeys: Array<string>
+  // openKeys 当前展开的 SubMenu 菜单项 key 数组
+  openKeys: Array<string>
+  // multiple 是否允许多选 默认为false
+  multiple: boolean
+  // theme 主题颜色
+  theme: ThemeEnum
+  // onClick 点击menuItem的时候调用此函数
+  onClick: (item: any, key: string) => void
+  // onOpenChange 展开关闭的回调
+  onOpenChange: (openKeys: string[]) => void
+  // onSelect被选中时候调用，重复点击只会调用一次
+  onSelect: (item: any, key: string) => void
+}
+
+export interface MenuItemProps {
+  // disabled 是否禁用 默认为false
+  disabled: boolean
+  // key item的标志 用来判断是否选中的时候用的
+  key?: string
+}
+
+export interface SubMenuProps {
+  // 子项
+  children?: Array<MenuItemProps | SubMenuProps>
+  // disabled 是否禁用
+  disabled: boolean
+  // key 唯一标志
+  key?: string
+  // title 子菜单选项
+  title?: string | React.ReactNode
+  // onTitleClick 点击子菜单的回调
+  onTitleClick: (key: string) => void
+}
