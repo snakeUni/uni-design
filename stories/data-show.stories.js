@@ -1,5 +1,7 @@
 import  React, { Component, useState } from "react";
 import { storiesOf } from "@storybook/react";
+import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
+
 import Icon from '../src/components/icon'
 import Button from '../src/components/button'
 import { Row, Col } from '../src/components/grid'
@@ -10,7 +12,6 @@ import Spin from '../src/components/spin'
 import Progress from '../src/components/progress'
 import Tag from '../src/components/tag'
 import Affix from '../src/components/affix'
-// import { AddMesssage } from '../src/components/message'
 import Collapse from '../src/components/collapse'
 import Card from '../src/components/card'
 import Badge from '../src/components/badge'
@@ -18,6 +19,12 @@ import Modal from '../src/components/modal'
 import Pagination from '../src/components/pagination'
 import Slide from '../src/components/slide'
 import Divider from '../src/components/divider'
+
+const stories = storiesOf('Storybook Knobs', module);
+
+// Add the `withKnobs` decorator to add knobs support to your stories.
+// You can also configure `withKnobs` as a global decorator.
+stories.addDecorator(withKnobs);
 
 const TagChecked = Tag.TagChecked
 
