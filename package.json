@@ -12,7 +12,7 @@
     "lint:style": "stylelint \"src/**/*.scss\" --syntax scss",
     "lint:style-fix": "stylelint \"src/**/*.scss\" --syntax scss --fix",
     "dev": "start-storybook -p 9001 -c .storybook",
-    "storybook": "rm -rf ./node_modules/@storybook/react/node_modules/react && rm -rf ./node_modules/@storybook/react/node_modules/react-dom && start-storybook -p 9999"
+    "build:story": "build-storybook"
   },
   "husky": {
     "hooks": {

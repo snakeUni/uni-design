@@ -11,16 +11,14 @@ export interface MenuProps {
   selectedKeys: Array<string>
   // openKeys 当前展开的 SubMenu 菜单项 key 数组
   openKeys: Array<string>
-  // multiple 是否允许多选 默认为false
-  multiple: boolean
   // theme 主题颜色
   theme: ThemeEnum
   // onClick 点击menuItem的时候调用此函数
-  onClick: (item: any, key: string) => void
+  onClick: (key: string) => void
   // onOpenChange 展开关闭的回调
   onOpenChange: (openKeys: string[]) => void
   // onSelect被选中时候调用，重复点击只会调用一次
-  onSelect: (item: any, key: string) => void
+  onSelect: (key: string, selectedKeys: Array<string>) => void
 }
 
 export interface MenuItemProps {
@@ -41,4 +39,9 @@ export interface SubMenuProps {
   title?: string | React.ReactNode
   // onTitleClick 点击子菜单的回调
   onTitleClick: (key: string) => void
+}
+
+export interface MenuGroupProps {
+  title?: React.ReactNode
+  key?: string
 }
