@@ -16,24 +16,22 @@ const getClassName = (selectedKey: string[], key: string) => {
 }
 
 const MenuItem: React.SFC<MenuItemProps> & { defaultProps: Partial<MenuItemProps> } = props => {
-  const { key } = props
+  const { itemKey, style } = props
   const { selectedKeys, onClick, onSelect } = React.useContext(Context)
-  const classStr = getClassName(selectedKeys, key as string)
+  const classStr = getClassName(selectedKeys, itemKey as string)
 
   const handleClick = () => {
-    if (!selectedKeys.includes(key as string)) {
-      const cloneSelectedKeys = selectedKeys.slice()
-      cloneSelectedKeys.includes(key as string)
-        ? cloneSelectedKeys
-        : cloneSelectedKeys.push(key as string)
-      onSelect(key as string, cloneSelectedKeys)
+    if (!selectedKeys.includes(itemKey as string)) {
+      const cloneSelectedKeys = []
+      cloneSelectedKeys.push(itemKey as string)
+      onSelect(itemKey as string, cloneSelectedKeys)
     }
-    onClick(key as string)
+    onClick(itemKey as string)
   }
 
   return (
     <React.Fragment>
-      <li className={classStr} onClick={handleClick}>
+      <li className={classStr} onClick={handleClick} style={style}>
         {props.children}
       </li>
     </React.Fragment>

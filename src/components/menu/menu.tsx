@@ -6,6 +6,8 @@ import SubMenu from './subMenu'
 import MenuGroup from './menuGroup'
 import MenuItem from './menuItem'
 
+import './style/index.scss'
+
 interface MenuStatic {
   SubMenu: React.SFC<SubMenuProps> & { defaultProps: Partial<SubMenuProps> }
   MenuGroup: React.SFC<MenuGroupProps>
@@ -53,7 +55,7 @@ const Menu: React.FC<MenuProps> & { defaultProps: Partial<MenuProps> } & MenuSta
   const classStr = getClassName(props)
   const value = getProvideValue(props)
   return (
-    <ul className={classStr}>
+    <ul className={classStr} style={props.style}>
       <Context.Provider value={value}>{props.children}</Context.Provider>
     </ul>
   )

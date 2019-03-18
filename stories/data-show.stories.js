@@ -19,6 +19,10 @@ import Modal from '../src/components/modal'
 import Pagination from '../src/components/pagination'
 import Slide from '../src/components/slide'
 import Divider from '../src/components/divider'
+import Menu from '../src/components/menu'
+const SubMenu = Menu.SubMenu
+const MenuItem = Menu.MenuItem
+const MenuGroup = Menu.MenuGroup
 
 const stories = storiesOf('Storybook Knobs', module);
 
@@ -825,5 +829,58 @@ storiesOf('data show', module)
         <a>关于我们</a>
       </div>
     </div>
+  )
+})
+.add('Menu', () => {
+  function MenuDemo() {
+
+    const [selectedKeys, setSelectedKeys] = React.useState([])
+    const [openKeys, setOpenKeys] = React.useState([])
+
+    const handleSelect = (key, selectedKey) => {
+      setSelectedKeys(selectedKey)
+    }
+
+    return (
+      <div style={{ color: '#000'}}>
+        <Menu style={{ width: 256 }}
+          openKeys={openKeys}
+          onSelect={handleSelect} 
+          selectedKeys={selectedKeys} 
+          onOpenChange={openKeys => {
+            console.log(openKeys)
+            setOpenKeys(openKeys)
+          }}
+        >
+          <SubMenu openKey="sub1" title="Navigation One">
+            <MenuGroup key="g1" title="item 1">
+              <MenuItem itemKey="1">option 1</MenuItem>
+              <MenuItem itemKey="2">option 2</MenuItem>
+            </MenuGroup>
+            <MenuGroup key="g2" title="item 2">
+              <MenuItem itemKey="3">option 3</MenuItem>
+              <MenuItem itemKey="4">option 4</MenuItem>
+            </MenuGroup>
+          </SubMenu>
+          <SubMenu openKey="sub2" title="Navigation Two">
+            <MenuItem itemKey="5">Option 5</MenuItem>
+            <MenuItem itemKey="6">Option 6</MenuItem>
+            <SubMenu openKey="sub3" title="Submenu" style={{ paddingLeft: 48}}>
+              <MenuItem itemKey="7" style={{ paddingLeft: 72}}>Option 7</MenuItem>
+              <MenuItem itemKey="8" style={{ paddingLeft: 72}}>Option 8</MenuItem>
+            </SubMenu>
+          </SubMenu>
+          <SubMenu openKey="sub4" title="Navigation Three">
+            <MenuItem itemKey="9">Option 9</MenuItem>
+            <MenuItem itemKey="10">Option 10</MenuItem>
+            <MenuItem itemKey="11">Option 11</MenuItem>
+            <MenuItem itemKey="12">Option 12</MenuItem>
+          </SubMenu>
+        </Menu>
+      </div>
+    )
+  }
+  return (
+    <MenuDemo />
   )
 })

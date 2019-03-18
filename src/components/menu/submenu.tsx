@@ -12,28 +12,23 @@ const defaultProps: SubMenuProps = {
   onTitleClick: noop
 }
 
-const getCloneOpenKeys = (openKeys: string[], expanded: boolean, subKey: string) => {
+const getCloneOpenKeys = (openKeys: string[], openKey: string) => {
   const cloneOpenKeys = openKeys.slice()
-  const isInclude = cloneOpenKeys.includes(subKey)
-  if (expanded) {
-    isInclude ? cloneOpenKeys : cloneOpenKeys.push(subKey)
-  } else {
-    isInclude ? cloneOpenKeys.splice(cloneOpenKeys.indexOf(subKey), 1) : cloneOpenKeys
-  }
+  const isInclude = cloneOpenKeys.includes(openKey)
+  isInclude ? cloneOpenKeys.splice(cloneOpenKeys.indexOf(openKey), 1) : cloneOpenKeys.push(openKey)
   return cloneOpenKeys
 }
 
 const SubMenu: React.SFC<SubMenuProps> & { defaultProps: Partial<SubMenuProps> } = props => {
-  const { title, children, key, onTitleClick } = props
+  const { title, children, openKey, onTitleClick, style } = props
   const { openKeys, onOpenChange } = React.useContext(context)
-  // openKey 初始化状态
-  const [expanded, setExpanded] = React.useState(openKeys.includes(key as string))
+
+  const expanded = openKeys.includes(openKey as string)
 
   const handleClick = () => {
-    const cloneOpenKeys = getCloneOpenKeys(openKeys, !expanded, key as string)
+    const cloneOpenKeys = getCloneOpenKeys(openKeys, openKey as string)
     onOpenChange(cloneOpenKeys)
-    onTitleClick(key as string)
-    setExpanded(!expanded)
+    onTitleClick(openKey as string)
   }
 
   const classStr = classNames(`${prefixCls}-list`, {
@@ -43,7 +38,7 @@ const SubMenu: React.SFC<SubMenuProps> & { defaultProps: Partial<SubMenuProps> }
   return (
     <React.Fragment>
       <li className={prefixCls}>
-        <div className={`${prefixCls}-title`} onClick={handleClick}>
+        <div className={`${prefixCls}-title`} onClick={handleClick} style={style}>
           <span>{title}</span>
           <Icon type={expanded ? 'up' : 'down'} />
         </div>
