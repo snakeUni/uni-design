@@ -52,11 +52,12 @@ const renderOptions = ({ options, value, onChange }: RadioGroupProps) => {
 
 const RadioGroup: React.SFC<RadioGroupProps> & {
   defaultProps: Partial<RadioGroupProps>
+  radio: Radio
 } = props => {
   const classStr = getClassNames(props)
   return <div className={classStr}>{renderOptions(props)}</div>
 }
-
+RadioGroup.radio = Radio
 RadioGroup.defaultProps = defaultProps
 
 export default RadioGroup
