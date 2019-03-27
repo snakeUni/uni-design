@@ -1,10 +1,8 @@
 import React from "react"
 import { configure, addDecorator, addParameters } from '@storybook/react'
-import { withInfo } from '@storybook/addon-info';
 import theme from './theme'
 
-import 'babel-polyfill'
-import '../stories/index.scss'
+// import 'babel-polyfill'
 
 // Load all files in the stories folder with a .js extension
 const req = require.context('../stories/', true, /.js$/)
@@ -21,6 +19,6 @@ addParameters({
   }
 })
 
-addDecorator(story => <div style={{ padding: "0 60px 50px" }}>{story()}</div>)
+addDecorator(story => <div style={{ padding: 20 }}>{story()}</div>)
 
 configure(loadStories, module)

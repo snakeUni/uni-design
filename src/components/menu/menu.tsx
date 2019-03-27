@@ -2,7 +2,7 @@ import * as React from 'react'
 import classNames from 'classnames'
 import { MenuProps, SubMenuProps, MenuItemProps, MenuGroupProps } from './interface'
 import Context from './context'
-import SubMenu from './subMenu'
+import SubMenu from './submenu'
 import MenuGroup from './menuGroup'
 import MenuItem from './menuItem'
 
