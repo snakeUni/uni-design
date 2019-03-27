@@ -114,7 +114,7 @@ const Affix: React.FC<AffixProps> & { defaultProps: Partial<AffixProps> } = prop
       }
     }
     return () => {}
-  })
+  }, [useSticky])
 
   const classStr = getClassNames(props)
   return (
